@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Oasp4Net.WebApiApplication</name>
+    </assembly>
+    <members>
+        <member name="M:Oasp4Net.WebApiApplication.Program.Main(System.String[])">
+            <summary>
+            Swagger json: http://localhost:8080/swagger/docs/v1
+            </summary>
+            <param name="args"></param>
+        </member>
+    </members>
+</doc>

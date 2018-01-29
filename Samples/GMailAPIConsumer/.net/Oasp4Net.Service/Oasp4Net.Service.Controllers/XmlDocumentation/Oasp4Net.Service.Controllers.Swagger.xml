@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Oasp4Net.Service.Controllers</name>
+    </assembly>
+    <members>
+        <member name="T:Oasp4Net.Service.Controllers.Controllers.EmailController">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>

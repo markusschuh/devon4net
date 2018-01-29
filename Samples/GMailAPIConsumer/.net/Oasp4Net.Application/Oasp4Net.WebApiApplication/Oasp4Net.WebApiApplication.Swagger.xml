@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Oasp4Net.WebApiApplication</name>
+    </assembly>
+    <members>
+        <member name="M:Oasp4Net.WebApiApplication.Program.Main(System.String[])">
+            <summary>
+            Swagger json: http://localhost:8080/swagger/docs/v1
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:Oasp4Net.WebApiApplication.Program.LoadControllersFromAssembly(System.String)">
+            <summary>
+            Load Controller types
+            </summary>
+            <param name="assemblyName"></param>
+        </member>
+    </members>
+</doc>

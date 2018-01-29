@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Oasp4Net.Business.Views</name>
+    </assembly>
+    <members>
+        <member name="T:Oasp4Net.Business.Views.Converters.EntityConverter">
+            <summary>
+            Sample to show how to map an entity to API View.
+            Similar to automapper  function
+            </summary>
+        </member>
+        <member name="M:Oasp4Net.Business.Views.Converters.EntityConverter.EntityToApi(System.String)">
+            <summary>
+            Transforms entity object to view object
+            </summary>
+            <param name="item">Entity item to be transformed to api view</param>
+            <returns>API view</returns>
+        </member>
+        <member name="T:Oasp4Net.Business.Views.Views.EmailView">
+            <summary>
+            Email View for sending emails via Google API
+            </summary>
+        </member>
+        <member name="P:Oasp4Net.Business.Views.Views.EmailView.EmailAndTokenTo">
+            <summary>
+            Dictionary MD5 Token, email host
+            </summary>
+        </member>
+        <member name="P:Oasp4Net.Business.Views.Views.EmailView.EmailType">
+            <summary>
+            0 - CreateBooking,
+            1 - InvitedGuest,
+            2 - InvitedHost,
+            3 - Order
+            </summary>
+        </member>
+        <member name="P:Oasp4Net.Business.Views.Views.EmailView.DetailMenu">
+            <summary>
+            List of different elements of the chosen menu
+            </summary>
+        </member>
+        <member name="P:Oasp4Net.Business.Views.Views.EmailView.ButtonActionList">
+            <summary>
+            Dictionary URL, text Button
+            </summary>
+        </member>
+        <member name="P:Oasp4Net.Business.Views.Views.EmailView.Host">
+            <summary>
+            Dictionary email, name
+            </summary>
+        </member>
+        <member name="T:Oasp4Net.Business.Views.Views.EntityView">
+            <summary>
+            Entity sample which represents a single dish structure from menu
+            </summary>
+        </member>
+    </members>
+</doc>
