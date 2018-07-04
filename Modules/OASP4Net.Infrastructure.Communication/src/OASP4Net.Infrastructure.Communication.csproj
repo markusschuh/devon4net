@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Capgemini Valencia Spain</Authors>
+    <Company>Capgemini S.A.</Company>
+    <Product>OASP4Net</Product>
+    <PackageLicenseUrl>https://oasp.github.io/TermsOfUse</PackageLicenseUrl>
+    <PackageProjectUrl>https://oasp.github.io</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/oasp/oasp4net</RepositoryUrl>
+    <PackageIconUrl>https://avatars3.githubusercontent.com/u/9847033?s=200&amp;v=4</PackageIconUrl>
+    <PackageTags>Capgemini OASP OASP4NET Traiectum Communication http httpclient</PackageTags>
+    <Copyright>Capgemini S.A.</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+</Project>

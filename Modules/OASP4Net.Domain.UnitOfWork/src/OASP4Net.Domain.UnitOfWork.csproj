@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Capgemini Valencia Spain</Authors>
+    <Company>Capgemini S.A.</Company>
+    <Product>OASP4NET</Product>
+    <PackageLicenseUrl>https://oasp.github.io/TermsOfUse</PackageLicenseUrl>
+    <PackageProjectUrl>https://oasp.github.io</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/oasp/oasp4net</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageIconUrl>https://avatars3.githubusercontent.com/u/9847033?s=200&amp;v=4</PackageIconUrl>
+    <Copyright>Capgemini S.A.</Copyright>
+    <PackageTags>Capgemini OASP OASP4NET Traiectum UnitOfWork UoW Repository</PackageTags>
+    <Description>Unit of work implementation for OASP solution. This unit of work provides the different methods to access the data layer with an atomic context. Sync and Async repository operations are provided. Customized Eager Loading method also provided for custom entity properties.</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD2_0</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Repository\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.1" />
+    <PackageReference Include="OASP4Net.Domain.Context" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>

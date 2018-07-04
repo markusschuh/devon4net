@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>OASP4Net.Infrastructure.AOP</id>
+    <version>1.0.0</version>
+    <authors>Capgemini Valencia Spain</authors>
+    <owners>Capgemini Valencia Spain</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://oasp.github.io/TermsOfUse</licenseUrl>
+    <projectUrl>https://oasp.github.io/</projectUrl>
+    <iconUrl>https://avatars3.githubusercontent.com/u/9847033?s=200&amp;v=4</iconUrl>
+    <description>Simple AOP Exception handler for .Net Controller classes integrated with Serilog.</description>
+    <summary>Simple AOP Exception handler for .Net Controller classes integrated with Serilog.</summary>
+    <releaseNotes>Serilog + Seq integration.</releaseNotes>
+    <copyright>Capgemini S.A.</copyright>
+    <language>en-FJ</language>
+    <tags>Capgemini OASP OASP4NET Traiectum AOP</tags>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.AspNetCore.Mvc" version="2.1.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Mvc.Abstractions" version="2.1.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Mvc.Core" version="2.1.0" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="11.0.2" exclude="Build,Analyzers" />
+        <dependency id="Serilog" version="2.7.1" exclude="Build,Analyzers" />
+        <dependency id="Serilog.AspNetCore" version="2.1.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="lib\netstandard2.0\OASP4Net.Infrastructure.AOP.dll" target="lib\netstandard2.0\OASP4Net.Infrastructure.AOP.dll" />
+  </files>
+</package>

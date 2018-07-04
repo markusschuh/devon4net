@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Capgemini Valencia Spain</Authors>
+    <Company>Capgemini S.A.</Company>
+    <PackageLicenseUrl>https://oasp.github.io/TermsOfUse</PackageLicenseUrl>
+    <PackageProjectUrl>https://oasp.github.io</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/oasp/oasp4net</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageIconUrl>https://avatars3.githubusercontent.com/u/9847033?s=200&amp;v=4</PackageIconUrl>
+    <PackageTags>Capgemini OASP OASP4NET Traiectum AOP</PackageTags>
+    <Copyright>Capgemini S.A.</Copyright>
+    <Product>OASP4Net</Product>
+    <Description>Simple AOP Exception handler for .Net Controller classes integrated with Serilog.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.1.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Serilog" Version="2.7.1" />
+    <PackageReference Include="Serilog.AspNetCore" Version="2.1.1" />
+  </ItemGroup>
+
+</Project>
