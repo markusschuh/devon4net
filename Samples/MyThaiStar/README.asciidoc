@@ -1,4 +1,4 @@
-# My Thai Star .NET Core (server) and Xamarin (frontend android/iOS) implementation
+﻿# My Thai Star .NET Core (server) and Xamarin (frontend android/iOS) implementation
 
 ## Folder Contents
 
@@ -8,7 +8,7 @@
 
 * *mailservice*: Microservice implementation to send notifications.
 
-* *netcore*: Server side using .net core 2.0.x.
+* *netcore*: Server side using .net core 2.1.x.
     
 * *xamarin*: Xamarin client based on Excalibur framework from The Netherlands using XForms.
 
