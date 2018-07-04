@@ -1,0 +1,15 @@
+﻿{
+  "author": "Capgemini Valencia ",
+  "classifications": ["OASP", "OASP4Net"],
+  "description": "OASP4Net API solution template",
+  "name": "OASP4Net API solution template",
+  "identity": "OASP4Net.WebAPI",
+  "groupIdentity": "OASP4Net",
+  "tags": {
+    "language": "C#",
+    "type": "solution"
+  },
+  "shortName": "OASP4NetAPI",
+  "sourceName": "OASP4NetAPI",
+  "guids": []
+}

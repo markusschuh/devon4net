@@ -1,0 +1,15 @@
+﻿{
+  "author": "Capgemini Valencia ",
+  "classifications": ["OASP", "OASP4Net"],
+  "description": "OASP4Net Test project template",
+  "name": "OASP4Net Test project template",
+  "identity": "OASP4Net.Test",
+  "groupIdentity": "OASP4Net",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "shortName": "OASP4NetTest",
+  "sourceName": "OASP4NetTest",
+  "guids": []
+}
