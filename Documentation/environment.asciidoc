@@ -8,9 +8,6 @@ toc::[]
 == [navy]#Overview#
 
 
-NOTE: In order to set up your environment, plase set true or false the _UseVisualStudioIde_ property at ConfigManager.cs. If set to false, you can use Visual Studio Code as your .NET IDE.
-
-
 == [navy]#Required software#
 https://code.visualstudio.com/[Visual Studio Code]
 
