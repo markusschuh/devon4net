@@ -14,6 +14,9 @@
     <PackageTags>Capgemini OASP OASP4NET Traiectum MVC</PackageTags>
     <Product>OASP4Net</Product>
     <Description>Common classes to extend controller functionality on API. Also provides support for paged results in OASP applications</Description>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.0.1</FileVersion>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
