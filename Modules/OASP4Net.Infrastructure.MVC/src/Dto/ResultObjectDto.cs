@@ -5,6 +5,8 @@ namespace OASP4Net.Infrastructure.MVC.Dto
 {
     public class ResultObjectDto<T>
     {
+        [JsonProperty(PropertyName = "error")]
+        public ErrorDto Error { get; set; }
         [JsonProperty(PropertyName = "pagination")]
         public Pagination Pagination { get; set; }
         [JsonProperty(PropertyName = "result")]
@@ -14,6 +16,7 @@ namespace OASP4Net.Infrastructure.MVC.Dto
         {
             Pagination = new Pagination();
             Result = new List<T>();
+            Error = new ErrorDto { Code = string.Empty, Message = string.Empty };
         }
 
         public string ToJson()
