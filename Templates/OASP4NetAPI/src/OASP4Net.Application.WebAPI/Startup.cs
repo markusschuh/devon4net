@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using OASP4Net.Infrastructure.AOP.Configuration;
 using OASP4Net.Infrastructure.Cors.Configuration;
 using OASP4Net.Infrastructure.JWT.Configuration;
 using Serilog;
@@ -17,6 +16,9 @@ using OASP4Net.Application.Configuration;
 using OASP4Net.Application.Configuration.Startup;
 using OASP4Net.Infrastructure.Swagger.Configuration;
 using OASP4Net.Infrastructure.Swagger;
+using OASP4Net.Infrastructure.Log.Middleware;
+using OASP4Net.Infrastructure.Log.Configuration;
+using OASP4Net.Infrastructure.Log;
 
 namespace OASP4Net.Application.WebAPI
 {
@@ -39,7 +41,8 @@ namespace OASP4Net.Application.WebAPI
             services.ConfigurePermisiveIdentityPolicyService();
             services.ConfigureJwtAuthenticationService();
             services.ConfigureJwtPolicy();
-            services.AddAopAttributeService();
+            services.AddAopAttributeService(ConfigurationManager.UseAOPTrace);
+            services.AddAopExceptionFilterAttribute();
             services.ConfigureDependencyInjectionService();
             services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true));
             services.ConfigureSwaggerService();
@@ -58,6 +61,7 @@ namespace OASP4Net.Application.WebAPI
         {
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
             app.UseCustomHeadersMiddleware();
+            app.UseMiddleware(typeof(LogExceptionHandlingMiddleware));
             app.UseStaticFiles();
             app.UseAuthentication();
             app.ConfigureUniversalCorsApplication();
@@ -73,6 +77,7 @@ namespace OASP4Net.Application.WebAPI
             Configuration.LoadCorsDefinition();
             Configuration.LoadMiddlewareDefinition();
             Configuration.LoadSwaggerDefinition();
+            Configuration.LoadLogDefinition();
         }
     }
 }

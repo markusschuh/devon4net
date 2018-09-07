@@ -17,6 +17,7 @@ namespace OASP4Net.Application.WebAPI
 
         public static IWebHost BuildWebHost(string[] args)
         {
+            
             return WebHost.CreateDefaultBuilder(args)
                             .UseStartup<Startup>()
                             .UseKestrel()

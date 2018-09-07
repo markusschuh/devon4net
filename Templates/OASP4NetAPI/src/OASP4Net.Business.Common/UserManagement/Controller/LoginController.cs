@@ -52,7 +52,6 @@ namespace OASP4Net.Business.Common.UserManagement.Controller
                     FirstName = userEasyName,
                     LastName = null
                 };
-
             }
             catch (Exception ex)
             {
@@ -103,7 +102,8 @@ namespace OASP4Net.Business.Common.UserManagement.Controller
             }
             catch (Exception ex)
             {
-                return StatusCode((int)HttpStatusCode.InternalServerError, $"{ex.Message} : {ex.InnerException}");
+                OASP4Net.Infrastructure.Log.OASP4NetLogger.Debug(ex);
+                throw ex;
             }
         }
     }

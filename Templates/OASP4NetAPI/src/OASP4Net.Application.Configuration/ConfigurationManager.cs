@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using OASP4Net.Infrastructure.Extensions;
+using System;
 using System.IO;
 using System.Linq;
 
@@ -7,18 +8,16 @@ namespace OASP4Net.Application.Configuration
 {
     public class ConfigurationManager
     {
-        private IConfiguration Configuration { get; set; }
-        public string CorsPolicy { get; set; }
+        private IConfiguration Configuration { get; set; }        
         public string LocalListenPort { get; set; }
         public string LocalKestrelUrl { get; set; }
-        public string LogFile { get; set; }
-        public string LogFolder { get; set; }
-        public string SeqLogServerUrl { get; set; }
-        public string LogDatabase { get; set; }
-        public string LogCategory { get; set; }
-        public string ValidAudienceJwt { get; set; }
-        public string ValidAudienceJwtPort { get; set; }
-        public string EmailServiceUrl { get; set; }
+
+        public bool UseSqliteLogDataBase { get; set; }
+        public bool UseSeqLogServer { get; set; }
+        public bool UseGrayLog { get; set; }
+
+        public bool UseAOPTrace { get; set; }
+
 
         public ConfigurationManager(IConfiguration configuration)
         {
@@ -65,17 +64,13 @@ namespace OASP4Net.Application.Configuration
 
         private void Configure()
         {
-            CorsPolicy = GetConfigurationValue("CorsPolicy");
+
             LocalListenPort = GetConfigurationValue("LocalListenPort");
             LocalKestrelUrl = string.Format(GetConfigurationValue("LocalKestrelUrl"), LocalListenPort);
-            ValidAudienceJwtPort = GetConfigurationValue("ValidAudienceJwtPort");
-            LogFile = GetConfigurationValue("LogFile");
-            LogFolder = GetConfigurationValue("LogFolder");
-            SeqLogServerUrl = GetConfigurationValue("SeqLogServerUrl");
-            LogDatabase = GetConfigurationValue("LogDatabase");
-            LogCategory = GetConfigurationValue("LogCategory");
-            ValidAudienceJwt = string.Format(GetConfigurationValue("ValidAudienceJwt"), ValidAudienceJwtPort);
-            EmailServiceUrl = string.Format(GetConfigurationValue("EmailServiceUrl"), LocalListenPort);
+            UseSqliteLogDataBase = String.IsNullOrEmpty(GetConfigurationValue("Log:SqliteDatabase"));
+            UseSqliteLogDataBase = String.IsNullOrEmpty(GetConfigurationValue("Log:SeqLogServerHost"));
+            UseSqliteLogDataBase = String.IsNullOrEmpty(GetConfigurationValue("Log:GrayLog:GrayLogHost"));
+            UseAOPTrace = Convert.ToBoolean(GetConfigurationValue("Log:UseAOPTrace"));
         }
     }
 }
