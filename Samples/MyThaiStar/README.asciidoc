@@ -34,3 +34,15 @@
 ** Host: localhost,1401
 ** Pass: C@pgemini2017
 * Folow the steps for the SQL Server normal instance and search for the .bak file at /tmp
+
+## Setting up SQL Server from Linux systems
+* From console command go to /database/SQLServer execute:
+      docker exec -i mythaistar_db_1 /bin/bash -c "cat > /tmp/MyThaiStar.bak" < MyThaiStar.bak
+
+* Restore the database on docker container with the following command:
+
+sudo docker exec -it mythaistar_db_1  /opt/mssql-tools/bin/sqlcmd \
+   -S localhost -U sa -P 'C@pgemini2017' \
+   -Q 'RESTORE DATABASE MyThaiStar FROM DISK = "/tmp/MyThaiStar.bak" WITH MOVE "MyThaiStar" TO "/var/opt/mssql/data/mythaistar.mdf", MOVE "MyThaiStar_log" TO "/var/opt/mssql/data/mythaistar_log.ldf"'
+  
+
