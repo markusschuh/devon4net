@@ -12,7 +12,7 @@
     <RepositoryUrl>https://github.com/oasp/oasp4net</RepositoryUrl>
     <PackageIconUrl>https://avatars3.githubusercontent.com/u/9847033?s=200&amp;v=4</PackageIconUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>Capgemini.pfx</AssemblyOriginatorKeyFile>
     <DelaySign>true</DelaySign>
     <PackageTags>Capgemini OASP OASP4NET Traiectum Context</PackageTags>
