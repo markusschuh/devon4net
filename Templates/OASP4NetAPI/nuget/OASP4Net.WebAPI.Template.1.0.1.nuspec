@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <id>OASP4Net.WebAPI.Template</id>
+    <id>Devon4Net.WebAPI.Template</id>
     <version>1.0.1</version>
-    <title>OASP4Net web API solution template</title>
+    <title>Devon4Net web API solution template</title>
     <authors>Capgemini Valencia</authors>
     <owners>Capgemini Valencia</owners>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
@@ -15,7 +15,7 @@
     <releaseNotes>Updated dependencies</releaseNotes>
     <copyright>Copyright © Capgemini</copyright>
     <language>en-GB</language>
-    <tags>OASP OASP4Net webapi</tags>
+    <tags>OASP Devon4Net webapi</tags>
     <packageTypes>
       <packageType name="Template" />
     </packageTypes>

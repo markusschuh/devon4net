@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Capgemini Valencia Spain</Authors>
+    <Company>Capgemini S.A.</Company>
+    <Product>Devon4Net</Product>
+    <PackageLicenseUrl>https://oasp.github.io/TermsOfUse</PackageLicenseUrl>
+    <PackageProjectUrl>https://oasp.github.io</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/oasp/oasp4net</RepositoryUrl>
+    <PackageIconUrl>https://avatars2.githubusercontent.com/u/7803029?s=200amp;v=4</PackageIconUrl>
+    <Copyright>Capgemini S.A.</Copyright>
+    <PackageTags>Capgemini devonfw devonfw4NET Traiectum JWT MVC</PackageTags>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Description>devonfw Extended controller to interact with JWT features</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Devon4Net.Infrastructure.Extensions" Version="1.0.0" />
+    <PackageReference Include="Devon4Net.Infrastructure.JWT" Version="1.0.2" />
+    <PackageReference Include="Devon4Net.Infrastructure.MVC" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>

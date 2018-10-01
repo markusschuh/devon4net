@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <id>OASP4Net.WebAPI.Template</id>
+    <id>Devon4Net.WebAPI.Template</id>
     <version>1.0.0</version>
-    <title>OASP4Net API solution template</title>
+    <title>Devon4Net API solution template</title>
     <authors>Capgemini Valencia</authors>
     <owners>Capgemini Valencia</owners>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
@@ -25,7 +25,7 @@
 - MVC Controller AOP</releaseNotes>
     <copyright>Copyright © Capgemini</copyright>
     <language>en-GB</language>
-    <tags>OASP OASP4Net webapi</tags>
+    <tags>OASP Devon4Net webapi</tags>
     <packageTypes>
       <packageType name="Template" />
     </packageTypes>
@@ -38,49 +38,49 @@
     <file src="content\.vs\OASP4NET\v15\Server\sqlite3\storage.ide-shm" target="content\.vs\OASP4NET\v15\Server\sqlite3\storage.ide-shm" />
     <file src="content\.vs\OASP4NET\v15\Server\sqlite3\storage.ide-wal" target="content\.vs\OASP4NET\v15\Server\sqlite3\storage.ide-wal" />
     <file src="content\.vs\OASP4NET\v15\.suo" target="content\.vs\OASP4NET\v15\.suo" />
-    <file src="content\.vs\OASP4Net.Application.WebAPI\DesignTimeBuild\.dtbcache" target="content\.vs\OASP4Net.Application.WebAPI\DesignTimeBuild\.dtbcache" />
-    <file src="content\.vs\OASP4Net.Application.WebAPI\v15\Server\sqlite3\db.lock" target="content\.vs\OASP4Net.Application.WebAPI\v15\Server\sqlite3\db.lock" />
-    <file src="content\.vs\OASP4Net.Application.WebAPI\v15\.suo" target="content\.vs\OASP4Net.Application.WebAPI\v15\.suo" />
+    <file src="content\.vs\Devon4Net.Application.WebAPI\DesignTimeBuild\.dtbcache" target="content\.vs\Devon4Net.Application.WebAPI\DesignTimeBuild\.dtbcache" />
+    <file src="content\.vs\Devon4Net.Application.WebAPI\v15\Server\sqlite3\db.lock" target="content\.vs\Devon4Net.Application.WebAPI\v15\Server\sqlite3\db.lock" />
+    <file src="content\.vs\Devon4Net.Application.WebAPI\v15\.suo" target="content\.vs\Devon4Net.Application.WebAPI\v15\.suo" />
     <file src="content\.vscode\launch.json" target="content\.vscode\launch.json" />
     <file src="content\.vscode\tasks.json" target="content\.vscode\tasks.json" />
-    <file src="content\OASP4Net.Application.Configuration\Startup\ConfigurationConst.cs" target="content\OASP4Net.Application.Configuration\Startup\ConfigurationConst.cs" />
-    <file src="content\OASP4Net.Application.Configuration\Startup\DataBaseConfiguration.cs" target="content\OASP4Net.Application.Configuration\Startup\DataBaseConfiguration.cs" />
-    <file src="content\OASP4Net.Application.Configuration\Startup\DependencyInjectionConfiguration.cs" target="content\OASP4Net.Application.Configuration\Startup\DependencyInjectionConfiguration.cs" />
-    <file src="content\OASP4Net.Application.Configuration\Startup\IdentityOptionsConfiguration.cs" target="content\OASP4Net.Application.Configuration\Startup\IdentityOptionsConfiguration.cs" />
-    <file src="content\OASP4Net.Application.Configuration\Startup\JwtApplicationConfiguration.cs" target="content\OASP4Net.Application.Configuration\Startup\JwtApplicationConfiguration.cs" />
-    <file src="content\OASP4Net.Application.Configuration\Startup\LoggerConfiguration.cs" target="content\OASP4Net.Application.Configuration\Startup\LoggerConfiguration.cs" />
-    <file src="content\OASP4Net.Application.Configuration\ConfigurationManager.cs" target="content\OASP4Net.Application.Configuration\ConfigurationManager.cs" />
-    <file src="content\OASP4Net.Application.Configuration\OASP4Net.Application.Configuration.csproj" target="content\OASP4Net.Application.Configuration\OASP4Net.Application.Configuration.csproj" />
-    <file src="content\OASP4Net.Application.WebAPI\.vs\OASP4Net.Application.WebAPI\v15\Server\sqlite3\db.lock" target="content\OASP4Net.Application.WebAPI\.vs\OASP4Net.Application.WebAPI\v15\Server\sqlite3\db.lock" />
-    <file src="content\OASP4Net.Application.WebAPI\.vs\OASP4Net.Application.WebAPI\v15\Server\sqlite3\storage.ide" target="content\OASP4Net.Application.WebAPI\.vs\OASP4Net.Application.WebAPI\v15\Server\sqlite3\storage.ide" />
-    <file src="content\OASP4Net.Application.WebAPI\.vs\OASP4Net.Application.WebAPI\v15\.suo" target="content\OASP4Net.Application.WebAPI\.vs\OASP4Net.Application.WebAPI\v15\.suo" />
-    <file src="content\OASP4Net.Application.WebAPI\Properties\launchSettings.json" target="content\OASP4Net.Application.WebAPI\Properties\launchSettings.json" />
-    <file src="content\OASP4Net.Application.WebAPI\appsettings.Development.json" target="content\OASP4Net.Application.WebAPI\appsettings.Development.json" />
-    <file src="content\OASP4Net.Application.WebAPI\appsettings.json" target="content\OASP4Net.Application.WebAPI\appsettings.json" />
-    <file src="content\OASP4Net.Application.WebAPI\OASP4Net.Application.WebAPI.csproj" target="content\OASP4Net.Application.WebAPI\OASP4Net.Application.WebAPI.csproj" />
-    <file src="content\OASP4Net.Application.WebAPI\oasp4net.pfx" target="content\OASP4Net.Application.WebAPI\oasp4net.pfx" />
-    <file src="content\OASP4Net.Application.WebAPI\Program.cs" target="content\OASP4Net.Application.WebAPI\Program.cs" />
-    <file src="content\OASP4Net.Application.WebAPI\Startup.cs" target="content\OASP4Net.Application.WebAPI\Startup.cs" />
-    <file src="content\OASP4Net.Business.Common\Configuration\BusinessCommonConfiguration.cs" target="content\OASP4Net.Business.Common\Configuration\BusinessCommonConfiguration.cs" />
-    <file src="content\OASP4Net.Business.Common\UserManagement\Controller\LoginController.cs" target="content\OASP4Net.Business.Common\UserManagement\Controller\LoginController.cs" />
-    <file src="content\OASP4Net.Business.Common\UserManagement\Dto\CurrentUserDto.cs" target="content\OASP4Net.Business.Common\UserManagement\Dto\CurrentUserDto.cs" />
-    <file src="content\OASP4Net.Business.Common\UserManagement\Dto\LoginDto.cs" target="content\OASP4Net.Business.Common\UserManagement\Dto\LoginDto.cs" />
-    <file src="content\OASP4Net.Business.Common\UserManagement\Service\ILoginService.cs" target="content\OASP4Net.Business.Common\UserManagement\Service\ILoginService.cs" />
-    <file src="content\OASP4Net.Business.Common\UserManagement\Service\LoginService.cs" target="content\OASP4Net.Business.Common\UserManagement\Service\LoginService.cs" />
-    <file src="content\OASP4Net.Business.Common\XmlDocumentation\Oasp4Net.Business.Common.Swagger.xml" target="content\OASP4Net.Business.Common\XmlDocumentation\Oasp4Net.Business.Common.Swagger.xml" />
-    <file src="content\OASP4Net.Business.Common\XmlDocumentation\Oasp4Net.Business.Controller.Swagger.xml" target="content\OASP4Net.Business.Common\XmlDocumentation\Oasp4Net.Business.Controller.Swagger.xml" />
-    <file src="content\OASP4Net.Business.Common\AutomapperProfile.cs" target="content\OASP4Net.Business.Common\AutomapperProfile.cs" />
-    <file src="content\OASP4Net.Business.Common\OASP4Net.Business.Common.csproj" target="content\OASP4Net.Business.Common\OASP4Net.Business.Common.csproj" />
-    <file src="content\OASP4Net.Domain.Entities\ModelContext.cs" target="content\OASP4Net.Domain.Entities\ModelContext.cs" />
-    <file src="content\OASP4Net.Domain.Entities\OASP4Net.Domain.Entities.csproj" target="content\OASP4Net.Domain.Entities\OASP4Net.Domain.Entities.csproj" />
-    <file src="content\OASP4Net.Test\Database\Resources\IntegrationTest.db" target="content\OASP4Net.Test\Database\Resources\IntegrationTest.db" />
-    <file src="content\OASP4Net.Test\Test\IntegrationTest\Management\ManagementTest.cs" target="content\OASP4Net.Test\Test\IntegrationTest\Management\ManagementTest.cs" />
-    <file src="content\OASP4Net.Test\Test\IntegrationTest\IntegrationTest.cs" target="content\OASP4Net.Test\Test\IntegrationTest\IntegrationTest.cs" />
-    <file src="content\OASP4Net.Test\Test\UnitTest\Management\ManagementTest.cs" target="content\OASP4Net.Test\Test\UnitTest\Management\ManagementTest.cs" />
-    <file src="content\OASP4Net.Test\Test\UnitTest\UnitTest.cs" target="content\OASP4Net.Test\Test\UnitTest\UnitTest.cs" />
-    <file src="content\OASP4Net.Test\Test\SampleTestClass.cs" target="content\OASP4Net.Test\Test\SampleTestClass.cs" />
-    <file src="content\OASP4Net.Test\OASP4Net.Test.csproj" target="content\OASP4Net.Test\OASP4Net.Test.csproj" />
-    <file src="content\OASP4Net.Test\sqlite3.dll" target="content\OASP4Net.Test\sqlite3.dll" />
+    <file src="content\Devon4Net.Application.Configuration\Startup\ConfigurationConst.cs" target="content\Devon4Net.Application.Configuration\Startup\ConfigurationConst.cs" />
+    <file src="content\Devon4Net.Application.Configuration\Startup\DataBaseConfiguration.cs" target="content\Devon4Net.Application.Configuration\Startup\DataBaseConfiguration.cs" />
+    <file src="content\Devon4Net.Application.Configuration\Startup\DependencyInjectionConfiguration.cs" target="content\Devon4Net.Application.Configuration\Startup\DependencyInjectionConfiguration.cs" />
+    <file src="content\Devon4Net.Application.Configuration\Startup\IdentityOptionsConfiguration.cs" target="content\Devon4Net.Application.Configuration\Startup\IdentityOptionsConfiguration.cs" />
+    <file src="content\Devon4Net.Application.Configuration\Startup\JwtApplicationConfiguration.cs" target="content\Devon4Net.Application.Configuration\Startup\JwtApplicationConfiguration.cs" />
+    <file src="content\Devon4Net.Application.Configuration\Startup\LoggerConfiguration.cs" target="content\Devon4Net.Application.Configuration\Startup\LoggerConfiguration.cs" />
+    <file src="content\Devon4Net.Application.Configuration\ConfigurationManager.cs" target="content\Devon4Net.Application.Configuration\ConfigurationManager.cs" />
+    <file src="content\Devon4Net.Application.Configuration\Devon4Net.Application.Configuration.csproj" target="content\Devon4Net.Application.Configuration\Devon4Net.Application.Configuration.csproj" />
+    <file src="content\Devon4Net.Application.WebAPI\.vs\Devon4Net.Application.WebAPI\v15\Server\sqlite3\db.lock" target="content\Devon4Net.Application.WebAPI\.vs\Devon4Net.Application.WebAPI\v15\Server\sqlite3\db.lock" />
+    <file src="content\Devon4Net.Application.WebAPI\.vs\Devon4Net.Application.WebAPI\v15\Server\sqlite3\storage.ide" target="content\Devon4Net.Application.WebAPI\.vs\Devon4Net.Application.WebAPI\v15\Server\sqlite3\storage.ide" />
+    <file src="content\Devon4Net.Application.WebAPI\.vs\Devon4Net.Application.WebAPI\v15\.suo" target="content\Devon4Net.Application.WebAPI\.vs\Devon4Net.Application.WebAPI\v15\.suo" />
+    <file src="content\Devon4Net.Application.WebAPI\Properties\launchSettings.json" target="content\Devon4Net.Application.WebAPI\Properties\launchSettings.json" />
+    <file src="content\Devon4Net.Application.WebAPI\appsettings.Development.json" target="content\Devon4Net.Application.WebAPI\appsettings.Development.json" />
+    <file src="content\Devon4Net.Application.WebAPI\appsettings.json" target="content\Devon4Net.Application.WebAPI\appsettings.json" />
+    <file src="content\Devon4Net.Application.WebAPI\Devon4Net.Application.WebAPI.csproj" target="content\Devon4Net.Application.WebAPI\Devon4Net.Application.WebAPI.csproj" />
+    <file src="content\Devon4Net.Application.WebAPI\oasp4net.pfx" target="content\Devon4Net.Application.WebAPI\oasp4net.pfx" />
+    <file src="content\Devon4Net.Application.WebAPI\Program.cs" target="content\Devon4Net.Application.WebAPI\Program.cs" />
+    <file src="content\Devon4Net.Application.WebAPI\Startup.cs" target="content\Devon4Net.Application.WebAPI\Startup.cs" />
+    <file src="content\Devon4Net.Business.Common\Configuration\BusinessCommonConfiguration.cs" target="content\Devon4Net.Business.Common\Configuration\BusinessCommonConfiguration.cs" />
+    <file src="content\Devon4Net.Business.Common\UserManagement\Controller\LoginController.cs" target="content\Devon4Net.Business.Common\UserManagement\Controller\LoginController.cs" />
+    <file src="content\Devon4Net.Business.Common\UserManagement\Dto\CurrentUserDto.cs" target="content\Devon4Net.Business.Common\UserManagement\Dto\CurrentUserDto.cs" />
+    <file src="content\Devon4Net.Business.Common\UserManagement\Dto\LoginDto.cs" target="content\Devon4Net.Business.Common\UserManagement\Dto\LoginDto.cs" />
+    <file src="content\Devon4Net.Business.Common\UserManagement\Service\ILoginService.cs" target="content\Devon4Net.Business.Common\UserManagement\Service\ILoginService.cs" />
+    <file src="content\Devon4Net.Business.Common\UserManagement\Service\LoginService.cs" target="content\Devon4Net.Business.Common\UserManagement\Service\LoginService.cs" />
+    <file src="content\Devon4Net.Business.Common\XmlDocumentation\Oasp4Net.Business.Common.Swagger.xml" target="content\Devon4Net.Business.Common\XmlDocumentation\Oasp4Net.Business.Common.Swagger.xml" />
+    <file src="content\Devon4Net.Business.Common\XmlDocumentation\Oasp4Net.Business.Controller.Swagger.xml" target="content\Devon4Net.Business.Common\XmlDocumentation\Oasp4Net.Business.Controller.Swagger.xml" />
+    <file src="content\Devon4Net.Business.Common\AutomapperProfile.cs" target="content\Devon4Net.Business.Common\AutomapperProfile.cs" />
+    <file src="content\Devon4Net.Business.Common\Devon4Net.Business.Common.csproj" target="content\Devon4Net.Business.Common\Devon4Net.Business.Common.csproj" />
+    <file src="content\Devon4Net.Domain.Entities\ModelContext.cs" target="content\Devon4Net.Domain.Entities\ModelContext.cs" />
+    <file src="content\Devon4Net.Domain.Entities\Devon4Net.Domain.Entities.csproj" target="content\Devon4Net.Domain.Entities\Devon4Net.Domain.Entities.csproj" />
+    <file src="content\Devon4Net.Test\Database\Resources\IntegrationTest.db" target="content\Devon4Net.Test\Database\Resources\IntegrationTest.db" />
+    <file src="content\Devon4Net.Test\Test\IntegrationTest\Management\ManagementTest.cs" target="content\Devon4Net.Test\Test\IntegrationTest\Management\ManagementTest.cs" />
+    <file src="content\Devon4Net.Test\Test\IntegrationTest\IntegrationTest.cs" target="content\Devon4Net.Test\Test\IntegrationTest\IntegrationTest.cs" />
+    <file src="content\Devon4Net.Test\Test\UnitTest\Management\ManagementTest.cs" target="content\Devon4Net.Test\Test\UnitTest\Management\ManagementTest.cs" />
+    <file src="content\Devon4Net.Test\Test\UnitTest\UnitTest.cs" target="content\Devon4Net.Test\Test\UnitTest\UnitTest.cs" />
+    <file src="content\Devon4Net.Test\Test\SampleTestClass.cs" target="content\Devon4Net.Test\Test\SampleTestClass.cs" />
+    <file src="content\Devon4Net.Test\Devon4Net.Test.csproj" target="content\Devon4Net.Test\Devon4Net.Test.csproj" />
+    <file src="content\Devon4Net.Test\sqlite3.dll" target="content\Devon4Net.Test\sqlite3.dll" />
     <file src="content\OASP4NET.sln" target="content\OASP4NET.sln" />
   </files>
 </package>

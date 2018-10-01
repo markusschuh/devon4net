@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <id>OASP4Net.Test.Template</id>
+    <id>Devon4Net.Test.Template</id>
     <version>1.0.0</version>
-    <title>OASP4Net Test project template</title>
+    <title>Devon4Net Test project template</title>
     <authors>Capgemini Valencia</authors>
     <owners>Capgemini Valencia</owners>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
@@ -15,7 +15,7 @@
     <releaseNotes>First release with sqlite local database</releaseNotes>
     <copyright>Copyright © Capgemini</copyright>
     <language>en-GB</language>
-    <tags>OASP OASP4Net Test</tags>
+    <tags>OASP Devon4Net Test</tags>
     <packageTypes>
       <packageType name="Template" />
     </packageTypes>
