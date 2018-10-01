@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Capgemini Valencia Spain</Authors>
+    <Company>Capgemini</Company>
+    <Description>SMTP Client for sending emails</Description>
+    <Copyright>Capgemini Valencia Spain</Copyright>
+    <PackageLicenseUrl>https://oasp.github.io/TermsOfUse</PackageLicenseUrl>
+    <PackageProjectUrl>https://oasp.github.io</PackageProjectUrl>
+    <PackageIconUrl>https://avatars3.githubusercontent.com/u/9847033?s=200&amp;amp;v=4</PackageIconUrl>
+    <RepositoryUrl>https://oasp.github.io</RepositoryUrl>
+    <PackageTags>Capgemini devonfw devonfw4NET Traiectum SMTP</PackageTags>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.0.1</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="2.0.4" />
+    <PackageReference Include="MimeKit" Version="2.0.4" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,30 @@
+2018-10-01 16:07:47.400 +02:00 [INF] Saved 0 entities to in-memory store.
+2018-10-01 16:07:47.747 +02:00 [INF] Saved 1 entities to in-memory store.
+2018-10-01 16:07:47.767 +02:00 [INF] Saved 1 entities to in-memory store.
+2018-10-01 16:07:47.845 +02:00 [INF] Saved 3 entities to in-memory store.
+2018-10-01 16:07:47.867 +02:00 [INF] Saved 1 entities to in-memory store.
+2018-10-01 16:07:47.869 +02:00 [INF] Saved 1 entities to in-memory store.
+2018-10-01 16:07:47.870 +02:00 [INF] Saved 3 entities to in-memory store.
+2018-10-01 16:07:55.616 +02:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2018-10-01 16:08:03.600 +02:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2018-10-01 16:08:03.617 +02:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2018-10-01 16:08:04.255 +02:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2018-10-01 16:08:19.310 +02:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2018-10-01 16:08:19.381 +02:00 [INF] Policy execution successful.
+2018-10-01 16:08:19.441 +02:00 [INF] Action: OnActionExecutionAsync | Controller: Login | method: Login| ActionArguments: 
+	
+Key: loginDto, 	
+Value: 	
+UserName: waiter	
+Password: waiter, 
+2018-10-01 16:08:19.446 +02:00 [INF] Action: OnActionExecuting | Controller: Login | method: Login| ActionArguments: 
+	
+Key: loginDto, 	
+Value: 	
+UserName: waiter	
+Password: waiter, 
+2018-10-01 16:08:19.595 +02:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2018-10-01 16:08:19.651 +02:00 [DBG] Result: 200 | Value: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIzNTkwMzg1Ni0wZTdhLTQ1MzEtOTdmNC0zYjU0NGI1MDllMGYiLCJzdWIiOiJ3YWl0ZXIiLCJpYXQiOjE1Mzg0MDI4OTksIlVzZXJJZCI6IjQ1MWEyZDVkLWJmNjItNDYzZC1hNzRhLWUwMTA0OGZjMmFkMyIsIlVzZXJOYW1lIjoid2FpdGVyIiwiVXNlckVtYWlsIjoid2FpdGVyQG10cy5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJ3YWl0ZXIiLCJyb2xlIjoid2FpdGVyIiwiZXhwIjoxNTM4NDAzMTk5LCJpc3MiOiJNeVRoYWlTdGFyIiwiYXVkIjoiTXlUaGFpU3RhciJ9.Xao1OondPmNCy0ZMuR0Cs4CbQZnqKYTHrju4PdSV4RbTmt6fRGoM0d0C2AlGIePdvCxRgBZhGUbhqtI_plYLow
+2018-10-01 16:08:19.661 +02:00 [DBG] Result: 200 | Value: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIzNTkwMzg1Ni0wZTdhLTQ1MzEtOTdmNC0zYjU0NGI1MDllMGYiLCJzdWIiOiJ3YWl0ZXIiLCJpYXQiOjE1Mzg0MDI4OTksIlVzZXJJZCI6IjQ1MWEyZDVkLWJmNjItNDYzZC1hNzRhLWUwMTA0OGZjMmFkMyIsIlVzZXJOYW1lIjoid2FpdGVyIiwiVXNlckVtYWlsIjoid2FpdGVyQG10cy5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJ3YWl0ZXIiLCJyb2xlIjoid2FpdGVyIiwiZXhwIjoxNTM4NDAzMTk5LCJpc3MiOiJNeVRoYWlTdGFyIiwiYXVkIjoiTXlUaGFpU3RhciJ9.Xao1OondPmNCy0ZMuR0Cs4CbQZnqKYTHrju4PdSV4RbTmt6fRGoM0d0C2AlGIePdvCxRgBZhGUbhqtI_plYLow
+2018-10-01 16:08:19.670 +02:00 [INF] Executing ObjectResult, writing value of type 'System.String'.
+2018-10-01 16:08:19.680 +02:00 [DBG] Result: 200 | Value: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIzNTkwMzg1Ni0wZTdhLTQ1MzEtOTdmNC0zYjU0NGI1MDllMGYiLCJzdWIiOiJ3YWl0ZXIiLCJpYXQiOjE1Mzg0MDI4OTksIlVzZXJJZCI6IjQ1MWEyZDVkLWJmNjItNDYzZC1hNzRhLWUwMTA0OGZjMmFkMyIsIlVzZXJOYW1lIjoid2FpdGVyIiwiVXNlckVtYWlsIjoid2FpdGVyQG10cy5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJ3YWl0ZXIiLCJyb2xlIjoid2FpdGVyIiwiZXhwIjoxNTM4NDAzMTk5LCJpc3MiOiJNeVRoYWlTdGFyIiwiYXVkIjoiTXlUaGFpU3RhciJ9.Xao1OondPmNCy0ZMuR0Cs4CbQZnqKYTHrju4PdSV4RbTmt6fRGoM0d0C2AlGIePdvCxRgBZhGUbhqtI_plYLow
