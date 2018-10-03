@@ -2,7 +2,7 @@
 
 
 - External configuration file for each environment
-- .NET Core 2.1.X working solution (Latest 2.1.104)
+- .NET Core 2.1.X working solution (Latest 2.1.402)
 - Packages and solution templates published on nuget
 - Full components customization by config file
 - Docker ready (My Thai Star sample fully working on docker)
@@ -14,6 +14,7 @@
 - Multiplatform support: Windows, Linux, Mac ready
 - Samples: My Thai Star backend, Google API integration, Azure login, AOP with Castle
 - Documentation site
+- SPA page support
 
 Included features:
 
