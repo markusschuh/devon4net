@@ -45,7 +45,7 @@ namespace Devon4Net.Application.WebAPI
             services.AddAopExceptionFilterAttribute();
             services.ConfigureDependencyInjectionService();
             services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true));
-            services.ConfigureSwaggerService();
+            if (ConfigurationManager.UseSwagger) services.ConfigureSwaggerService();
             services.AddMvc().AddJsonOptions(options =>
             {
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
@@ -55,8 +55,9 @@ namespace Devon4Net.Application.WebAPI
             });
             services.ConfigureCorsService();
             services.AddOptions();
+            if (ConfigurationManager.UseSpa) services.ConfigureSPA(ConfigurationManager.DistPath);
         }
-        
+
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, DataSeeder seeder)
         {
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
@@ -65,9 +66,10 @@ namespace Devon4Net.Application.WebAPI
             app.UseStaticFiles();
             app.UseAuthentication();
             app.ConfigureUniversalCorsApplication();
-            app.ConfigureSwaggerApplication();
-            ConfigurationManager.ConfigureLog();            
+            if (ConfigurationManager.UseSwagger) app.ConfigureSwaggerApplication();
+            ConfigurationManager.ConfigureLog();
             seeder.SeedAsync().Wait();
+            if (ConfigurationManager.UseSpa) app.ConfigureSpa(ConfigurationManager.DistPath, ConfigurationManager.SpaNpmScript, ConfigurationManager.UseProxyToSpaDevelopmentServer,ConfigurationManager.LocalKestrelUrl);
             app.UseMvc();
         }
 

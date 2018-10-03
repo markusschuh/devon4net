@@ -1,8 +1,4 @@
-﻿using Microsoft.IdentityModel.Logging;
-using Devon4Net.Infrastructure.Log.Configuration;
-using Serilog;
-using Serilog.Events;
-using System;
+﻿using Devon4Net.Infrastructure.Log.Configuration;
 
 namespace Devon4Net.Application.Configuration.Startup
 {

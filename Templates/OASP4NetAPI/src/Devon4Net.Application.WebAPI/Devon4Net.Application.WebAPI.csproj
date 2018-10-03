@@ -3,7 +3,37 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <UserSecretsId>98aec2f1-47ca-4552-8617-677c5ddc8337</UserSecretsId>
+    <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\dist\**" />
+    <Compile Remove="wwwroot\e2e\**" />
+    <Compile Remove="wwwroot\src\**" />
+    <Content Remove="wwwroot\dist\**" />
+    <Content Remove="wwwroot\e2e\**" />
+    <Content Remove="wwwroot\src\**" />
+    <EmbeddedResource Remove="wwwroot\dist\**" />
+    <EmbeddedResource Remove="wwwroot\e2e\**" />
+    <EmbeddedResource Remove="wwwroot\src\**" />
+    <None Remove="wwwroot\dist\**" />
+    <None Remove="wwwroot\e2e\**" />
+    <None Remove="wwwroot\src\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\.angular-cli.json" />
+    <Content Remove="wwwroot\.editorconfig" />
+    <Content Remove="wwwroot\.gitignore" />
+    <Content Remove="wwwroot\angular.json" />
+    <Content Remove="wwwroot\karma.conf.js" />
+    <Content Remove="wwwroot\package-lock.json" />
+    <Content Remove="wwwroot\package.json" />
+    <Content Remove="wwwroot\protractor.conf.js" />
+    <Content Remove="wwwroot\README.md" />
+    <Content Remove="wwwroot\tsconfig.json" />
+    <Content Remove="wwwroot\tslint.json" />
+  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Logs\" />

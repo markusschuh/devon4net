@@ -11,13 +11,16 @@ namespace Devon4Net.Application.Configuration
         private IConfiguration Configuration { get; set; }        
         public string LocalListenPort { get; set; }
         public string LocalKestrelUrl { get; set; }
-
         public bool UseSqliteLogDataBase { get; set; }
         public bool UseSeqLogServer { get; set; }
         public bool UseGrayLog { get; set; }
-
         public bool UseAOPTrace { get; set; }
-
+        public bool UseSpa { get; set; }
+        public string DistPath { get; set; }
+        public string SourcePath { get; set; }
+        public string UseProxyToSpaDevelopmentServer { get; set; }
+        public string SpaNpmScript { get; set; }
+        public bool UseSwagger { get; set; }
 
         public ConfigurationManager(IConfiguration configuration)
         {
@@ -64,13 +67,18 @@ namespace Devon4Net.Application.Configuration
 
         private void Configure()
         {
-
             LocalListenPort = GetConfigurationValue("LocalListenPort");
             LocalKestrelUrl = string.Format(GetConfigurationValue("LocalKestrelUrl"), LocalListenPort);
-            UseSqliteLogDataBase = String.IsNullOrEmpty(GetConfigurationValue("Log:SqliteDatabase"));
-            UseSqliteLogDataBase = String.IsNullOrEmpty(GetConfigurationValue("Log:SeqLogServerHost"));
-            UseSqliteLogDataBase = String.IsNullOrEmpty(GetConfigurationValue("Log:GrayLog:GrayLogHost"));
+            UseSqliteLogDataBase = string.IsNullOrEmpty(GetConfigurationValue("Log:SqliteDatabase"));
+            UseSqliteLogDataBase = string.IsNullOrEmpty(GetConfigurationValue("Log:SeqLogServerHost"));
+            UseGrayLog = string.IsNullOrEmpty(GetConfigurationValue("Log:GrayLog:GrayLogHost"));
             UseAOPTrace = Convert.ToBoolean(GetConfigurationValue("Log:UseAOPTrace"));
+            UseSpa = Convert.ToBoolean(GetConfigurationValue("Spa:UseSpa"));
+            DistPath = GetConfigurationValue("Spa:DistPath");
+            SourcePath = GetConfigurationValue("Spa:SourcePath");
+            UseProxyToSpaDevelopmentServer = GetConfigurationValue("Spa:UseProxyToSpaDevelopmentServer");
+            SpaNpmScript = GetConfigurationValue("Spa:NpmScript");
+            UseSwagger = Convert.ToBoolean(GetConfigurationValue("UseSwagger"));
         }
     }
 }
