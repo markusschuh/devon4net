@@ -1,16 +1,15 @@
-﻿{
+{
   "author": "Capgemini Valencia ",
-  "classifications": [ "devonfw", "Devon4Net" ],
-  "description": "Devon4Net API solution template",
-  "name": "Devon4Net API solution template",
-  "identity": "Devon4Net.WebAPI",
-  "groupIdentity": "Devon4Net",
+  "classifications": ["devonfw", "devon4Net"],
+  "description": "devon4Net API solution template",
+  "name": "devon4Net API solution template",
+  "identity": "devon4Net.WebAPI",
+  "groupIdentity": "devon4Net",
   "tags": {
     "language": "C#",
     "type": "solution"
   },
-  "shortName": "Devon4NetAPI",
-  "sourceName": "Devon4Net",
-  "preferNameDirectory": true,
+  "shortName": "devon4NetAPI",
+  "sourceName": "devon4NetAPI",
   "guids": []
 }
