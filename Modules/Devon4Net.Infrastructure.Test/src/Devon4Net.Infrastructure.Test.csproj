@@ -20,15 +20,15 @@
     <Description>devonfw Base classes to create unit tests and integration tests with Moq and xUnit</Description>
     <PackageId>Devon4Net.Infrastructure.Test</PackageId>
     <PackageReleaseNotes>devonfw Base classes to create unit tests and integration tests with Moq and xUnit</PackageReleaseNotes>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="7.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.1" />
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="Devon4Net.Domain.Context" Version="1.0.1" />
+    <PackageReference Include="Devon4Net.Infrastructure.Extensions" Version="1.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.8" />
     <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
-    <PackageReference Include="Devon4Net.Domain.Context" Version="1.0.0" />
-    <PackageReference Include="Devon4Net.Infrastructure.Extensions" Version="1.0.0" />
   </ItemGroup>
 
 </Project>

@@ -15,6 +15,7 @@
     <Description>Enables CORS configuration for Devon4Net application. Multiple domains can be configured from configuration. Mandatory to web clients (p.e. Angular) to prevent making AJAX requests to another domain.</Description>
     <PackageReleaseNotes>Multiple domain configurations from configuration</PackageReleaseNotes>
     <NeutralLanguage>EN-GB</NeutralLanguage>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

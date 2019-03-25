@@ -12,10 +12,12 @@
     <PackageIconUrl>https://avatars2.githubusercontent.com/u/7803029?s=200amp;v=4</PackageIconUrl>
     <PackageTags>Capgemini devonfw devonfw4NET Traiectum Communication http httpclient</PackageTags>
     <Copyright>Capgemini S.A.</Copyright>
+    <Version>1.0.1</Version>
+    <Description>Please start using Devon4Net.Infrastructure.CircuitBreaker for http/https client factory</Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
   </ItemGroup>
 
 </Project>

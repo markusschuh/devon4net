@@ -6,7 +6,7 @@
     <Company>Capgemini S.A.</Company>
     <Product>devonfw4NET</Product>
     <PackageLicenseUrl>https://oasp.github.io/TermsOfUse</PackageLicenseUrl>
-    <PackageProjectUrl>https://oasp.github.io</PackageProjectUrl>
+    <PackageProjectUrl>http://www.devonfw.com/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/oasp/oasp4net</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
@@ -14,6 +14,7 @@
     <Copyright>Capgemini S.A.</Copyright>
     <PackageTags>Capgemini devonfw devonfw4NET Traiectum UnitOfWork UoW Repository</PackageTags>
     <Description>Unit of work implementation for devonfw solution. This unit of work provides the different methods to access the data layer with an atomic context. Sync and Async repository operations are provided. Customized Eager Loading method also provided for custom entity properties.</Description>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -25,8 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.1" />
-    <PackageReference Include="Devon4Net.Domain.Context" Version="1.0.0" />
+    <PackageReference Include="Devon4Net.Domain.Context" Version="1.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.8" />
   </ItemGroup>
 
 </Project>

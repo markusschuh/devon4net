@@ -1,5 +1,4 @@
-﻿using Microsoft.IdentityModel.Logging;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -9,7 +8,7 @@ namespace Devon4Net.Infrastructure.JWT
     public class JwtClientToken
     {
         public string CreateClientToken(List<Claim> clientClaims)
-        {            
+        {
             var token = new JwtSecurityToken(
                     issuer: JwtTokenDefinition.Issuer,
                     audience: JwtTokenDefinition.Audience,

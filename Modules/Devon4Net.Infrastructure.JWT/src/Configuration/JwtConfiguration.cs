@@ -14,16 +14,13 @@ namespace Devon4Net.Infrastructure.JWT.Configuration
 
         public static void ConfigureJwtAuthenticationService(this IServiceCollection services)
         {
-            services.AddAuthentication(options =>
-            {
-                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
+            services.AddAuthentication(options => options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
                 options.RequireHttpsMetadata = false;
                 options.SaveToken = true;
                 options.TokenValidationParameters = new TokenValidationParameters()
-                {                    
+                {
                     RequireSignedTokens = true,                    
                     IssuerSigningKey = JwtTokenDefinition.IssuerSigningKey,
                     ValidAudience = JwtTokenDefinition.Audience,
@@ -52,10 +49,7 @@ namespace Devon4Net.Infrastructure.JWT.Configuration
 
         public static void ConfigureJwtAddPolicy(this IServiceCollection services, string policyName, string claimType, string claimValue)
         {
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy(policyName, policy => policy.RequireClaim(claimType, claimValue));
-            });
+            services.AddAuthorization(options => options.AddPolicy(policyName, policy => policy.RequireClaim(claimType, claimValue)));
         }
     }
 }

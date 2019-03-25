@@ -14,12 +14,13 @@
     <PackageTags>Capgemini devonfw devonfw4NET Traiectum JWT MVC</PackageTags>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Description>devonfw Extended controller to interact with JWT features</Description>
+    <Version>1.0.3</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Devon4Net.Infrastructure.Extensions" Version="1.0.0" />
-    <PackageReference Include="Devon4Net.Infrastructure.JWT" Version="1.0.2" />
-    <PackageReference Include="Devon4Net.Infrastructure.MVC" Version="1.0.0" />
+    <PackageReference Include="Devon4Net.Infrastructure.Extensions" Version="1.0.1" />
+    <PackageReference Include="Devon4Net.Infrastructure.JWT" Version="1.0.4" />
+    <PackageReference Include="Devon4Net.Infrastructure.MVC" Version="1.0.2" />
   </ItemGroup>
 
 </Project>

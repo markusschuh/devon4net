@@ -76,3 +76,8 @@ dotnet restore
 dotnet build -c release >..\..\results\Devon4Net.Infrastructure.Test.result.txt
 
 cd ..\..
+cd ./Devon4Net.Infrastructure.CircuitBreaker/src
+dotnet restore
+dotnet build -c release >..\..\results\Devon4Net.Infrastructure.CircuitBreaker.result.txt
+
+cd ..\..

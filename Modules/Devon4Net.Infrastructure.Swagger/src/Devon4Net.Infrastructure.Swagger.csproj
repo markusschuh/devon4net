@@ -14,12 +14,13 @@
     <PackageTags>Capgemini devonfw devonfw4NET Traiectum Swagger</PackageTags>
     <Product>Devon4Net</Product>
     <Description>devonfw Swagger abstraction to provide full externalized easy configuration.</Description>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="2.5.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="2.5.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="2.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="4.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="4.0.1" />
   </ItemGroup>
 
 </Project>

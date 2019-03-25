@@ -1,7 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
-using Devon4Net.Infrastructure.Extensions;
 using System;
 using System.IO;
 using System.Linq;
@@ -38,7 +36,6 @@ namespace Devon4Net.Infrastructure.JWT
 
             if (!string.IsNullOrEmpty(secret)) GetSigningCredentialsFromKey(secret);
             else GetSigningCredentialsFromCertificate(configuration["JWT:Certificate"], configuration["JWT:CertificatePassword"]);
-
         }
 
         private static string GetCertificateFullPath(string certificatePath)
@@ -47,7 +44,14 @@ namespace Devon4Net.Infrastructure.JWT
             var theCert = Directory.GetFiles(Directory.GetCurrentDirectory(), certificatePath, SearchOption.AllDirectories).FirstOrDefault();
             if (string.IsNullOrEmpty(theCert)) throw new Exception("Certificate not found");
             return theCert;
-            
+        }
+
+        private static string GetFileFullPath(string fileName)
+        {
+            if (File.Exists(fileName)) return fileName;
+            var theCert = Directory.GetFiles(Directory.GetCurrentDirectory(), fileName, SearchOption.AllDirectories).FirstOrDefault();
+            if (string.IsNullOrEmpty(theCert)) throw new FileNotFoundException("fileName", "Certificate not found");
+            return theCert;
         }
 
         private static void GetSigningCredentialsFromKey(string secretKey)
