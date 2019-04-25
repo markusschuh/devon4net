@@ -18,7 +18,7 @@ using Devon4Net.Infrastructure.JWT.MVC.Controller;
 namespace Devon4Net.Business.Common.UserManagement.Controller
 {
     [EnableCors("CorsPolicy")]
-
+    [Route("/api/user/v1")]
     public class LoginController : Devon4NetJWTController
     {        
         private readonly ILoginService _loginService;
@@ -30,7 +30,7 @@ namespace Devon4Net.Business.Common.UserManagement.Controller
 
         [HttpGet]
         [HttpOptions]
-        [Route("/api/user/v1/currentuser")]
+        [Route("currentuser")]
         [EnableCors("CorsPolicy")]
         public IActionResult CurrentUser()
         {
@@ -73,7 +73,7 @@ namespace Devon4Net.Business.Common.UserManagement.Controller
         /// <response code="500">Internal Server Error. The search process ended with error.</response>       
         [HttpPost]
         [HttpOptions]
-        [Route("/api/user/v1/login")]
+        [Route("login")]
         [AllowAnonymous]
         [EnableCors("CorsPolicy")]
         public async Task<IActionResult> Login([FromBody]LoginDto loginDto)
