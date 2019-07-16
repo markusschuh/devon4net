@@ -1,27 +1,29 @@
-===  Arquitecture basics
+= devon4net
 
-include::architecture_guide.asciidoc[]
+== Arquitecture basics
 
-===  Coding conventions
+include::architecture_guide.asciidoc[leveloffset=2]
 
-include::codeconvention.asciidoc[]
+== Coding conventions
 
-===  Environment
+include::codeconvention.asciidoc[leveloffset=2]
 
-include::environment.asciidoc[]
+== Environment
 
-===  User guide
+include::environment.asciidoc[leveloffset=2]
 
-include::userguide.asciidoc[]
+== User guide
 
-===  Packages
+include::userguide.asciidoc[leveloffset=2]
 
-include::packages.asciidoc[]
+== Packages
 
-===  Templates
+include::packages.asciidoc[leveloffset=2]
 
-include::templates.asciidoc[]
+== Templates
 
-===  Samples
+include::templates.asciidoc[leveloffset=2]
 
-include::samples.asciidoc[]
+== Samples
+
+include::samples.asciidoc[leveloffset=2]
