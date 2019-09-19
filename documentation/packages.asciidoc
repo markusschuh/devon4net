@@ -5,13 +5,15 @@ toc::[]
 :iconfont-name: font-awesome
 :stylesdir: css
 
-= [navy]#Packages overview#
+= Packages
+
+== [navy]#Packages overview#
 
 
 NOTE: _OASP4Net_ is composed by a number of packages that increases the functionality and boosts time development. Each package has it's own configuration to make them work properly. In _appsettings.json_ set up your environment. On _appsettings.{environment}.json_ you can configure each component.
 
 
-= [navy]#The packages#
+== [navy]#The packages#
 
 You can get the OASP packages on https://www.nuget.org/packages?q=oasp[nuget.org].
 
