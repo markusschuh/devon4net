@@ -5,6 +5,8 @@ toc::[]
 :iconfont-name: font-awesome
 :stylesdir: css
 
+= Code conventions
+
 == [navy]#Introduction#
 This document covers .NET Coding Standards and is recommended to be read by team leaders/sw architects and developing teams operating in the Microsoft .NET environment.
 
