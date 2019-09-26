@@ -21,7 +21,7 @@ namespace Devon4Net.Infrastructure.JWT.MVC.Controller
         }
 
         [NonAction]
-        public IEnumerable<Claim> GetCurrentUser()
+        protected IEnumerable<Claim> GetCurrentUser()
         {
             var headerValue = HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer", string.Empty).Trim();
             var handler = new JwtSecurityTokenHandler();
@@ -39,14 +39,14 @@ namespace Devon4Net.Infrastructure.JWT.MVC.Controller
         }
 
         [NonAction]
-        public Claim GetUserClaim(string claimName, IEnumerable<Claim> jwtUser = null)
+        protected Claim GetUserClaim(string claimName, IEnumerable<Claim> jwtUser = null)
         {
             var user = jwtUser ?? GetCurrentUser();
             return GetCurrentUser().FirstOrDefault(c => c.Type == claimName);
         }
 
         [NonAction]
-        public IEnumerable<Claim> GetUserClaims(IEnumerable<Claim> jwtUser = null)
+        protected IEnumerable<Claim> GetUserClaims(IEnumerable<Claim> jwtUser = null)
         {
             return jwtUser ?? GetCurrentUser();
         }
