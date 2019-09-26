@@ -17,21 +17,38 @@ using Devon4Net.Infrastructure.JWT.MVC.Controller;
 
 namespace Devon4Net.Business.Common.UserManagement.Controller
 {
+    /// <summary>
+    /// Provides the user login process
+    /// </summary>
     [EnableCors("CorsPolicy")]
     [Route("/api/user/v1")]
     public class LoginController : Devon4NetJWTController
-    {        
+    {
         private readonly ILoginService _loginService;
 
+        /// <summary>
+        /// Sets up the initialization
+        /// </summary>
+        /// <param name="loginService"></param>
+        /// <param name="signInManager"></param>
+        /// <param name="userManager"></param>
+        /// <param name="logger"></param>
+        /// <param name="mapper"></param>
         public LoginController(ILoginService loginService,  SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, ILogger<LoginController> logger, IMapper mapper) : base(logger,mapper)
         {
             _loginService = loginService;
         }
 
+        /// <summary>
+        /// Gets the user information
+        /// </summary>
         [HttpGet]
         [HttpOptions]
         [Route("currentuser")]
         [EnableCors("CorsPolicy")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(401)]
+        [ProducesResponseType(500)]
         public IActionResult CurrentUser()
         {
             CurrentUserDto result = new CurrentUserDto();
@@ -56,17 +73,15 @@ namespace Devon4Net.Business.Common.UserManagement.Controller
             catch (Exception ex)
             {
                 Logger.LogDebug($"{ex.Message} : {ex.InnerException}");
-                throw ex;
+                throw;
             }
-            
-            return Ok(GetJsonFromObject(result));            
+            return Ok(GetJsonFromObject(result));
         }
 
         /// <summary>
         /// Gets the  list of available dishes regarding the filter options
         /// </summary>
         /// <param name="loginDto"></param>
-        /// <returns></returns>
         /// <response code="200"> Ok. </response>
         /// <response code="401">Unathorized. Autentication fail</response>  
         /// <response code="403">Forbidden. Authorization error.</response>    
@@ -76,21 +91,23 @@ namespace Devon4Net.Business.Common.UserManagement.Controller
         [Route("login")]
         [AllowAnonymous]
         [EnableCors("CorsPolicy")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(500)]
         public async Task<IActionResult> Login([FromBody]LoginDto loginDto)
         {
             try
             {
                 if (loginDto == null) return Ok();
-                var loged = await _loginService.LoginAsync(loginDto.UserName, loginDto.Password);
+                var loged = await _loginService.LoginAsync(loginDto.UserName, loginDto.Password).ConfigureAwait(false);
                 if (loged)
                 {
                     var user = await _loginService.GetUserByUserNameAsync(loginDto.UserName);
                     var encodedJwt = new JwtClientToken().CreateClientToken(_loginService.GetUserClaimsAsync(user));
-                    
+
                     Response.Headers.Add("Access-Control-Expose-Headers", "Authorization");
                     Response.Headers.Add("X-Application-Context", "restaurant:h2mem:8081");
                     Response.Headers.Add("Authorization", $"{JwtBearerDefaults.AuthenticationScheme} {encodedJwt}");
-                    
+
                     return Ok(encodedJwt);
                 }
                 else
@@ -98,12 +115,11 @@ namespace Devon4Net.Business.Common.UserManagement.Controller
                     Response.Headers.Clear();
                     return StatusCode((int)HttpStatusCode.Unauthorized, "Login Error");
                 }
-                
             }
             catch (Exception ex)
             {
                 Devon4Net.Infrastructure.Log.Devon4NetLogger.Debug(ex);
-                throw ex;
+                throw;
             }
         }
     }

@@ -4,6 +4,10 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>XmlDocumentation/Devon4Net.Business.Common.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="General\**" />
     <EmbeddedResource Remove="General\**" />
@@ -27,6 +31,12 @@
     <ProjectReference Include="..\..\..\..\Modules\Devon4Net.Infrastructure.JWT\src\Devon4Net.Infrastructure.JWT.csproj" />
     <ProjectReference Include="..\..\..\..\Modules\Devon4Net.Infrastructure.Log\src\Devon4Net.Infrastructure.Log.csproj" />
     <ProjectReference Include="..\Devon4Net.Domain.Entities\Devon4Net.Domain.Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="XmlDocumentation\Devon4Net.Business.Common.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
