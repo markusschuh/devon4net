@@ -41,16 +41,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
-    <PackageReference Include="Devon4Net.Infrastructure.CircuitBreaker" Version="1.0.2" />
-    <PackageReference Include="Devon4Net.Infrastructure.Swagger" Version="1.0.2" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" />
-    <PackageReference Include="Devon4Net.Infrastructure.Cors" Version="1.0.1" />
-    <PackageReference Include="Devon4Net.Infrastructure.Extensions" Version="1.0.1" />
-    <PackageReference Include="Devon4Net.Infrastructure.JWT.MVC" Version="1.0.3" />
-    <PackageReference Include="Devon4Net.Infrastructure.Log" Version="1.0.3" />
-    <PackageReference Include="Devon4Net.Infrastructure.Middleware" Version="1.0.1" />
-    <PackageReference Include="Devon4Net.Infrastructure.MVC" Version="1.0.2" />
     <PackageReference Include="Serilog.AspNetCore" Version="2.1.1" />
     <PackageReference Include="Serilog.Extensions.Logging.File" Version="1.1.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
@@ -62,10 +54,17 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
-    <PackageReference Include="Devon4Net.Domain.Context" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>    
+    <ProjectReference Include="..\..\..\..\Modules\Devon4Net.Domain.Context\src\Devon4Net.Domain.Context.csproj" />    
+    <ProjectReference Include="..\..\..\..\Modules\Devon4Net.Infrastructure.CircuitBreaker\src\Devon4Net.Infrastructure.CircuitBreaker.csproj" />    
+    <ProjectReference Include="..\..\..\..\Modules\Devon4Net.Infrastructure.Cors\src\Devon4Net.Infrastructure.Cors.csproj" />    
+    <ProjectReference Include="..\..\..\..\Modules\Devon4Net.Infrastructure.Extensions\src\Devon4Net.Infrastructure.Extensions.csproj" />    
+    <ProjectReference Include="..\..\..\..\Modules\Devon4Net.Infrastructure.JWT.MVC\src\Devon4Net.Infrastructure.JWT.MVC.csproj" />    
+    <ProjectReference Include="..\..\..\..\Modules\Devon4Net.Infrastructure.JWT\src\Devon4Net.Infrastructure.JWT.csproj" />    
+    <ProjectReference Include="..\..\..\..\Modules\Devon4Net.Infrastructure.Middleware\src\Devon4Net.Infrastructure.Middleware.csproj" />    
+    <ProjectReference Include="..\..\..\..\Modules\Devon4Net.Infrastructure.Swagger\src\Devon4Net.Infrastructure.Swagger.csproj" />    
     <ProjectReference Include="..\Devon4Net.Application.Configuration\Devon4Net.Application.Configuration.csproj" />
     <ProjectReference Include="..\Devon4Net.Business.Common\Devon4Net.Business.Common.csproj" />
     <ProjectReference Include="..\Devon4Net.Domain.Entities\Devon4Net.Domain.Entities.csproj" />

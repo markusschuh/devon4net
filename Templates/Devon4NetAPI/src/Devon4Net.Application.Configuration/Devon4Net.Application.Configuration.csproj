@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.All" />
+    <PackageReference Include="Serilog.AspNetCore" Version="2.1.1" />
+    <PackageReference Include="Serilog.Extensions.Logging.File" Version="1.1.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
+    <PackageReference Include="Serilog.Sinks.Seq" Version="4.0.0" />
+    <PackageReference Include="Serilog.Sinks.SQLite.NetStandard" Version="1.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="4.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="4.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Modules\Devon4Net.Domain.UnitOfWork\src\Devon4Net.Domain.UnitOfWork.csproj" />
+    <ProjectReference Include="..\..\..\..\Modules\Devon4Net.Infrastructure.ApplicationUser\src\Devon4Net.Infrastructure.ApplicationUser.csproj" />
+    <ProjectReference Include="..\..\..\..\Modules\Devon4Net.Infrastructure.CircuitBreaker\src\Devon4Net.Infrastructure.CircuitBreaker.csproj" />
+    <ProjectReference Include="..\..\..\..\Modules\Devon4Net.Infrastructure.Extensions\src\Devon4Net.Infrastructure.Extensions.csproj" />
+    <ProjectReference Include="..\..\..\..\Modules\Devon4Net.Infrastructure.JWT.MVC\src\Devon4Net.Infrastructure.JWT.MVC.csproj" />
+    <ProjectReference Include="..\..\..\..\Modules\Devon4Net.Infrastructure.JWT\src\Devon4Net.Infrastructure.JWT.csproj" />
+    <ProjectReference Include="..\..\..\..\Modules\Devon4Net.Infrastructure.Log\src\Devon4Net.Infrastructure.Log.csproj" />
+    <ProjectReference Include="..\..\..\..\Modules\Devon4Net.Infrastructure.MVC\src\Devon4Net.Infrastructure.MVC.csproj" />
+    <ProjectReference Include="..\Devon4Net.Business.Common\Devon4Net.Business.Common.csproj" />
+    <ProjectReference Include="..\Devon4Net.Domain.Entities\Devon4Net.Domain.Entities.csproj" />
+  </ItemGroup>
+
+</Project>
