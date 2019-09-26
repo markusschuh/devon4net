@@ -16,6 +16,8 @@
     <PackageReleaseNotes>Multiple domain configurations from configuration</PackageReleaseNotes>
     <NeutralLanguage>EN-GB</NeutralLanguage>
     <Version>1.0.1</Version>
+    <AssemblyVersion>2.1.0.0</AssemblyVersion>
+    <FileVersion>2.1.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

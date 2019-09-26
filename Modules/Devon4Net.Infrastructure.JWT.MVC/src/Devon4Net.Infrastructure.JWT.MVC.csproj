@@ -15,12 +15,14 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Description>devonfw Extended controller to interact with JWT features</Description>
     <Version>1.0.3</Version>
+    <AssemblyVersion>2.1.0.0</AssemblyVersion>
+    <FileVersion>2.1.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Devon4Net.Infrastructure.Extensions" Version="1.0.1" />
-    <PackageReference Include="Devon4Net.Infrastructure.JWT" Version="1.0.4" />
-    <PackageReference Include="Devon4Net.Infrastructure.MVC" Version="1.0.2" />
+    <ProjectReference Include="..\..\Devon4Net.Infrastructure.Extensions\src\Devon4Net.Infrastructure.Extensions.csproj" />
+    <ProjectReference Include="..\..\Devon4Net.Infrastructure.JWT\src\Devon4Net.Infrastructure.JWT.csproj" />
+    <ProjectReference Include="..\..\Devon4Net.Infrastructure.MVC\src\Devon4Net.Infrastructure.MVC.csproj" />
   </ItemGroup>
 
 </Project>
