@@ -65,7 +65,7 @@ namespace Devon4Net.Business.Common.UserManagement.Controller
                 {
                     Name = userEasyName,
                     Role = GetUserClaim(ClaimTypes.Role, user)?.Value.ToUpper(),
-                    Id = user.Id,
+                    Id = GetUserClaim("UserId", user)?.Value,
                     FirstName = userEasyName,
                     LastName = null
                 };

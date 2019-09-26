@@ -6,6 +6,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Devon4Net.Infrastructure.JWT.MVC.Controller
 {
@@ -20,25 +21,34 @@ namespace Devon4Net.Infrastructure.JWT.MVC.Controller
         }
 
         [NonAction]
-        public JwtSecurityToken GetCurrentUser()
+        public IEnumerable<Claim> GetCurrentUser()
         {
             var headerValue = HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer", string.Empty).Trim();
             var handler = new JwtSecurityTokenHandler();
-            return handler.ReadJwtToken(headerValue);
+
+            var claimsPrincipal = handler.ValidateToken(headerValue,
+                new TokenValidationParameters
+                {
+                    ValidAudience = JwtTokenDefinition.Audience,
+                    ValidIssuer = JwtTokenDefinition.Issuer,
+                    RequireSignedTokens = false,
+                    TokenDecryptionKey = JwtTokenDefinition.SecurityKey
+                }, out SecurityToken securityToken);
+
+            return claimsPrincipal.Claims;
         }
 
         [NonAction]
-        public Claim GetUserClaim(string claimName, JwtSecurityToken jwtUser = null)
+        public Claim GetUserClaim(string claimName, IEnumerable<Claim> jwtUser = null)
         {
             var user = jwtUser ?? GetCurrentUser();
-            return user.Claims.FirstOrDefault(c => c.Type == claimName);
+            return GetCurrentUser().FirstOrDefault(c => c.Type == claimName);
         }
 
         [NonAction]
-        public IEnumerable<Claim> GetUserClaims(JwtSecurityToken jwtUser = null)
+        public IEnumerable<Claim> GetUserClaims(IEnumerable<Claim> jwtUser = null)
         {
-            var user = jwtUser ?? GetCurrentUser();
-            return user.Claims;
+            return jwtUser ?? GetCurrentUser();
         }
     }
 }

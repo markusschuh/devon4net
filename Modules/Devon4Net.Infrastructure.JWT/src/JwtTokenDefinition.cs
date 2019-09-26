@@ -13,13 +13,15 @@ namespace Devon4Net.Infrastructure.JWT
         #region attributes
 
         public static SecurityKey IssuerSigningKey { get; set; }
-        public static SigningCredentials SigningCredentials { get; set; }
+        public static EncryptingCredentials SigningCredentials { get; set; }
         public static TimeSpan TokenExpirationTime { get; set; } = TimeSpan.FromHours(60);
         public static int ClockSkew { get; set; }
         public static string Issuer { get; set; } = string.Empty;
         public static string Audience { get; set; } = string.Empty;
         public static bool ValidateIssuerSigningKey { get; set; } = true;
         public static bool ValidateLifetime { get; set; } = true;
+        public static SecurityKey SecurityKey { get; set; }
+
         private static X509Certificate2 Certificate { get; set; }
 
         #endregion
@@ -57,15 +59,16 @@ namespace Devon4Net.Infrastructure.JWT
         private static void GetSigningCredentialsFromKey(string secretKey)
         {
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
+            SecurityKey = key;
             IssuerSigningKey = new SymmetricSecurityKey(key.Key);
-            SigningCredentials = new SigningCredentials(key, SecurityAlgorithms.RsaSha256);
+            SigningCredentials = new EncryptingCredentials(key, SecurityAlgorithms.RsaSha256);
         }
 
         private static void GetSigningCredentialsFromCertificate(string certificate, string password)
         {
             Certificate = new X509Certificate2(GetCertificateFullPath(certificate), password);
-            IssuerSigningKey = new SymmetricSecurityKey(Certificate.RawData);
-            SigningCredentials = new SigningCredentials(IssuerSigningKey, SecurityAlgorithms.HmacSha512);
+            SecurityKey = new X509SecurityKey(Certificate);
+            SigningCredentials = new X509EncryptingCredentials(Certificate);
         }
     }
 }

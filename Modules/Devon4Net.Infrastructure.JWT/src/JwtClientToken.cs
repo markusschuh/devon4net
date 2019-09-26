@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 
 namespace Devon4Net.Infrastructure.JWT
@@ -9,14 +11,18 @@ namespace Devon4Net.Infrastructure.JWT
     {
         public string CreateClientToken(List<Claim> clientClaims)
         {
-            var token = new JwtSecurityToken(
-                    issuer: JwtTokenDefinition.Issuer,
-                    audience: JwtTokenDefinition.Audience,
-                    claims: clientClaims,
-                    expires: DateTime.UtcNow.AddMinutes(Convert.ToInt16(JwtTokenDefinition.ClockSkew)),
-                    signingCredentials: JwtTokenDefinition.SigningCredentials);
+            var token = new SecurityTokenDescriptor
+            {
+                Issuer = JwtTokenDefinition.Issuer,
+                Audience = JwtTokenDefinition.Audience,
+                Subject = new ClaimsIdentity(clientClaims),
+                EncryptingCredentials = JwtTokenDefinition.SigningCredentials,
+                Expires = DateTime.UtcNow.AddMinutes(Convert.ToInt16(JwtTokenDefinition.ClockSkew)),
+                IssuedAt = DateTime.Now,
+                Claims = clientClaims.ToDictionary(x=>x.Type, x=>x.Value as object)
+            };
 
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            return new JwtSecurityTokenHandler().CreateEncodedJwt(token);
         }
     }
 }
