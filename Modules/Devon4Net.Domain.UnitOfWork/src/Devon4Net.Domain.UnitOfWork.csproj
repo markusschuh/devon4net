@@ -15,6 +15,8 @@
     <PackageTags>Capgemini devonfw devonfw4NET Traiectum UnitOfWork UoW Repository</PackageTags>
     <Description>Unit of work implementation for devonfw solution. This unit of work provides the different methods to access the data layer with an atomic context. Sync and Async repository operations are provided. Customized Eager Loading method also provided for custom entity properties.</Description>
     <Version>1.0.1</Version>
+    <AssemblyVersion>2.1.0.0</AssemblyVersion>
+    <FileVersion>2.1.0.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -26,8 +28,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Devon4Net.Domain.Context" Version="1.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Devon4Net.Domain.Context\src\Devon4Net.Domain.Context.csproj" />
   </ItemGroup>
 
 </Project>
