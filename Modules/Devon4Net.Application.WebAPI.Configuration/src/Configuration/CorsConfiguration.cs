@@ -15,7 +15,6 @@ namespace Devon4Net.Application.WebAPI.Configuration
                     builder.AllowAnyOrigin();
                     builder.AllowAnyHeader();
                     builder.AllowAnyMethod();
-                    builder.AllowCredentials();
                 });
             });
         }

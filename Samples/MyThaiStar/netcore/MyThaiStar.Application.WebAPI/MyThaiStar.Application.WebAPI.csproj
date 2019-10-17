@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Modules\Devon4Net.Application.WebAPI.Configuration\src\Devon4Net.Application.WebAPI.Configuration.csproj" />
+    <ProjectReference Include="..\MyThaiStar.Business.Common\MyThaiStar.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
