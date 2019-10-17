@@ -13,16 +13,16 @@ namespace Devon4Net.Infrastructure.Middleware.Headers
         public static string ReferrerPolicyHeader { get; set; }
         
 
-        public static void LoadMiddlewareDefinition(this IConfiguration configuration)
+        public static void SetupHeaders(this IConfiguration configuration)
         {
-            AccessControlExposeHeader = configuration["Middleware:Headers:AccessControlExposeHeader"];
-            StrictTransportSecurityHeader = configuration["Middleware:Headers:StrictTransportSecurityHeader"];
-            XFrameOptionsHeader = configuration["Middleware:Headers:XFrameOptionsHeader"];
-            XssProtectionHeader = configuration["Middleware:Headers:XssProtectionHeader"];
-            XContentTypeOptionsHeader = configuration["Middleware:Headers:XContentTypeOptionsHeader"];
-            ContentSecurityPolicyHeader = configuration["Middleware:Headers:ContentSecurityPolicyHeader"];
-            PermittedCrossDomainPoliciesHeader = configuration["Middleware:Headers:PermittedCrossDomainPoliciesHeader"];
-            ReferrerPolicyHeader = configuration["Middleware:Headers:ReferrerPolicyHeader"];
+            AccessControlExposeHeader = configuration["Headers:AccessControlExposeHeader"];
+            StrictTransportSecurityHeader = configuration["Headers:StrictTransportSecurityHeader"];
+            XFrameOptionsHeader = configuration["Headers:XFrameOptionsHeader"];
+            XssProtectionHeader = configuration["Headers:XssProtectionHeader"];
+            XContentTypeOptionsHeader = configuration["Headers:XContentTypeOptionsHeader"];
+            ContentSecurityPolicyHeader = configuration["Headers:ContentSecurityPolicyHeader"];
+            PermittedCrossDomainPoliciesHeader = configuration["Headers:PermittedCrossDomainPoliciesHeader"];
+            ReferrerPolicyHeader = configuration["Headers:ReferrerPolicyHeader"];
         }
     }
 

@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using Devon4Net.Infrastructure.Common.Helpers;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Devon4Net.Infrastructure.Log.Attribute
@@ -18,12 +20,16 @@ namespace Devon4Net.Infrastructure.Log.Attribute
             UseAopObjectTrace = useAop;
         }
 
+        public AopControllerAttribute()
+        {
+        }
+
         public override void OnActionExecuting(ActionExecutingContext context)
         {                
             try
             {
                 var controllerValues = GetControllerProperties((Microsoft.AspNetCore.Mvc.Controllers.ControllerActionDescriptor)context.ActionDescriptor, context.ActionArguments);
-                Devon4Net.Infrastructure.Log.Devon4NetLogger.Information($"Action: OnActionExecuting | Controller: {controllerValues.ControllerName} | method: {controllerValues.ControllerMethod}| ActionArguments: {controllerValues.ActionArguments}");
+                LogEvent("OnActionExecuting", $"Controller: {controllerValues.ControllerName} | method: {controllerValues.ControllerMethod}| ActionArguments: {controllerValues.ActionArguments}");
                 base.OnActionExecuting(context);
             }
             catch (Exception ex)
@@ -37,7 +43,7 @@ namespace Devon4Net.Infrastructure.Log.Attribute
         {
             try
             {
-                if (context.Result!=null) LogObjectResult(context.Result as Microsoft.AspNetCore.Mvc.ObjectResult);
+                if (context.Result!=null) LogEvent("OnActionExecuted", context.Result as Microsoft.AspNetCore.Mvc.ObjectResult);
                 base.OnActionExecuted(context);
             }
             catch (Exception ex)
@@ -64,7 +70,7 @@ namespace Devon4Net.Infrastructure.Log.Attribute
         {
             try
             {
-                if (context.Result != null) LogObjectResult(context.Result as Microsoft.AspNetCore.Mvc.ObjectResult);
+                if (context.Result != null) LogEvent("OnResultExecuted", context.Result as Microsoft.AspNetCore.Mvc.ObjectResult);
                 base.OnResultExecuted(context);
             }
             catch (Exception ex)
@@ -79,7 +85,7 @@ namespace Devon4Net.Infrastructure.Log.Attribute
             try
             {
                 var controllerValues = GetControllerProperties((Microsoft.AspNetCore.Mvc.Controllers.ControllerActionDescriptor)context.ActionDescriptor, context.ActionArguments);
-                Devon4Net.Infrastructure.Log.Devon4NetLogger.Information($"Action: OnActionExecutionAsync | Controller: {controllerValues.ControllerName} | method: {controllerValues.ControllerMethod}| ActionArguments: {controllerValues.ActionArguments}");
+                LogEvent("OnActionExecutionAsync", $"Controller: {controllerValues.ControllerName} | method: {controllerValues.ControllerMethod}| ActionArguments: {controllerValues.ActionArguments}");
 
                 return base.OnActionExecutionAsync(context, next);
             }
@@ -94,7 +100,7 @@ namespace Devon4Net.Infrastructure.Log.Attribute
         {
             try
             {
-                if (context.Result != null) LogObjectResult(context.Result as Microsoft.AspNetCore.Mvc.ObjectResult);
+                if (context.Result != null) LogEvent("OnResultExecutionAsync", context.Result as Microsoft.AspNetCore.Mvc.ObjectResult);
                 return base.OnResultExecutionAsync(context, next);
             }
             catch (Exception ex)
@@ -104,9 +110,29 @@ namespace Devon4Net.Infrastructure.Log.Attribute
             }
         }
 
-        private void LogObjectResult(Microsoft.AspNetCore.Mvc.ObjectResult result)
+        private void LogEvent(string method, Microsoft.AspNetCore.Mvc.ObjectResult result)
         {
-            Devon4Net.Infrastructure.Log.Devon4NetLogger.Debug($"Result: {result.StatusCode} | Value: {result.Value}");
+            Devon4Net.Infrastructure.Log.Devon4NetLogger.Information($"Result from {method}: {result.StatusCode} | Value: {GetValue(result.Value)}");
+        }
+
+        private void LogEvent(string method, string result)
+        {
+            Devon4Net.Infrastructure.Log.Devon4NetLogger.Information($"Result from {method}: {result}");
+        }
+
+        private string GetValue(object toPrint)
+        {
+            var result = string.Empty;
+            try
+            {
+                result = JsonSerializer.Serialize(toPrint);
+            }
+            catch (Exception ex)
+            {
+                Devon4Net.Infrastructure.Log.Devon4NetLogger.Error($"The result object can not be represented. Please use serializable objects: {ex.Message} | {ex.InnerException} ");
+            }
+
+            return result;
         }
 
         #region prettyprint

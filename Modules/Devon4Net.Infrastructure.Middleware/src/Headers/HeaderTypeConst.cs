@@ -17,6 +17,12 @@
         public const string PermittedCrossDomainPoliciesHeader = "X-Permitted-Cross-Domain-Policies";
 
         public const string ReferrerPolicyHeader = "Referrer-Policy";
+        
+        public const string ServerHeader = "Server";
+
+        public const string AspNetVersion = "X-AspNet-Version";
+
+        public const string XPowered = "X-Powered-By";
     }
 
 }

@@ -1,10 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Devon4Net.Domain.Context;
-using Devon4Net.Domain.UnitOfWork.UnitOfWork;
+﻿using Devon4Net.Domain.UnitOfWork.UnitOfWork;
+using Microsoft.EntityFrameworkCore;
 
 namespace Devon4Net.Domain.UnitOfWork.Service
 {
-    public class Service<TContext> : IService where TContext: Devon4NetBaseContext
+    public class Service<TContext> : IService where TContext : DbContext
     {
         public IUnitOfWork<TContext> UoW { get; }
 

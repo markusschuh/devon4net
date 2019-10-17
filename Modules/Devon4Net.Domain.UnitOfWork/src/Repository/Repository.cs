@@ -1,190 +1,120 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+using Devon4Net.Domain.UnitOfWork.Exceptions;
 using Devon4Net.Domain.UnitOfWork.Pagination;
+using Microsoft.EntityFrameworkCore;
 
 namespace Devon4Net.Domain.UnitOfWork.Repository
 {
-    /// <summary>
-    ///     https://docs.microsoft.com/en-us/ef/core/querying/related-data
-    ///     Lazy loading is not yet supported by EF Core. You can view the lazy loading item on our backlog to track this
-    ///     feature.
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class Repository<T> : IRepository<T> where T : class
+    public abstract class Repository<T> : IRepository<T> where T : class
     {
-        private DbContext Context { get; }
-        protected DbSet<T> DbSet;
+        private DbContext DbContext { get; set; }
 
         public Repository(DbContext context)
         {
-            Context = context;
-            DbSet = context.Set<T>();
+            DbContext = context;
         }
 
-        #region sync methods
-        public IList<T> GetAll(Expression<Func<T, bool>> predicate = null)
+        public async Task<T> Create(T entity)
         {
-            return null != predicate ? DbSet.Where(predicate).ToList() : DbSet.AsEnumerable().ToList();
+            var result = await DbContext.Set<T>().AddAsync(entity).ConfigureAwait(false);
+            result.State = EntityState.Added;
+            await DbContext.SaveChangesAsync().ConfigureAwait(false);
+            return result.Entity;
         }
 
-        public PaginationResult<T> GetAllPaged(int currentPage, int pageSize, Expression<Func<T, bool>> predicate = null)
+        public async Task<bool> Delete(T entity)
         {
-            var result =  null != predicate ? DbSet.Where(predicate) : DbSet;
-            return GetPaginationResult(currentPage, pageSize, ref result);
+            var result = DbContext.Set<T>().Remove(entity);
+            result.State = EntityState.Deleted;
+            var deleted = await DbContext.SaveChangesAsync().ConfigureAwait(false);
+            return deleted > 0;
         }
 
-        public async Task<PaginationResult<T>> GetAllpagedAsync(int currentPage, int pageSize, Expression<Func<T, bool>> predicate = null)
+        public async Task<bool> Delete(Expression<Func<T, bool>> predicate = null)
         {
-            var result = null != predicate ? DbSet.Where(predicate) : DbSet;
-            return await GetPaginationResultAsync(currentPage, pageSize, result);
-        }
-
-        public IList<T> GetAllInclude(IList<string> include, Expression<Func<T, bool>> predicate = null)
-        {
-            return DbSetWithProperties(include, predicate).AsEnumerable().ToList();
-        }
-
-        public T Get(Expression<Func<T, bool>> predicate = null)
-        {
-            return null != predicate ? DbSet.FirstOrDefault(predicate) : DbSet.FirstOrDefault();
-        }
-
-        public PaginationResult<T> GetPaged(int currentPage, int pageSize, Expression<Func<T, bool>> predicate = null)
-        {
-            
-            var result =  predicate !=null ? DbSet.Where(predicate): DbSet;
-            return GetPaginationResult(currentPage, pageSize, ref result);
-        }
-
-        public PaginationResult<T> GetAllIncludePaged(int currentPage, int pageSize, IList<string> include, Expression<Func<T, bool>> predicate = null)
-        {
-            return DbSetWithPropertiesPaged(currentPage, pageSize, include, predicate);
-        }
-
-
-        public T Create(T entity)
-        {
-            return DbSet.Add(entity).Entity;
-        }
-
-        public void Delete(T entity)
-        {
-            if (Context.Entry(entity).State == EntityState.Detached)
+            var result = new List<bool>();
+            var entities = await Get(predicate).ConfigureAwait(false);
+            foreach (var item in entities)
             {
-                DbSet.Attach(entity);
+                result.Add(await Delete(item).ConfigureAwait(false));
             }
-            DbSet.Remove(entity);
+
+            return result.All(r=> r);
         }
 
-        public void DeleteById(object id)
+        public Task<T> GetFirstOrDefault(Expression<Func<T, bool>> predicate = null)
         {
-            var entityToDelete = DbSet.Find(id);
-            DbSet.Remove(entityToDelete);
+            return GetQueryFromPredicate(predicate).FirstOrDefaultAsync();
+        }
+        
+        public Task<T> GetLastOrDefault(Expression<Func<T, bool>> predicate = null)
+        {
+            return GetQueryFromPredicate(predicate).LastOrDefaultAsync();
+        }        
+
+        public async Task<IList<T>> Get(Expression<Func<T, bool>> predicate = null)
+        {
+            return await GetQueryFromPredicate(predicate).ToListAsync().ConfigureAwait(false);
         }
 
-        public void Delete(Expression<Func<T, bool>> where)
+        public async Task<IList<T>> Get(IList<string> include, Expression<Func<T, bool>> predicate = null)
         {
-            var objects = DbSet.Where(where).AsEnumerable();
-            foreach (var item in objects)
-                DbSet.Remove(item);
+            return await GetResultSetWithNestedProperties(include, predicate).ToListAsync().ConfigureAwait(false);
         }
 
-        public void Edit(T entity)
+        public Task<PaginationResult<T>> Get(int currentPage, int pageSize, IList<string> includedNestedFiels, Expression<Func<T, bool>> predicate = null)
         {
-            Context.Entry(entity).State = EntityState.Modified;
+            return GetResultSetWithNestedPropertiesPaged(currentPage, pageSize, includedNestedFiels, predicate);
         }
 
-        public T FirstOrDefault(Expression<Func<T, bool>> where = null)
+        public Task<PaginationResult<T>> Get(int currentPage, int pageSize, Expression<Func<T, bool>> predicate = null)
         {
-            return DbSet.FirstOrDefault(where);
+            return GetPagedResult(currentPage, pageSize, GetQueryFromPredicate(predicate));
         }
 
-        #endregion
-
-        #region async methods
-        public async Task<IList<T>> GetAllAsync(Expression<Func<T, bool>> predicate = null)
+        public async Task<T> Update(T entity)
         {
-            return predicate != null
-                ? await DbSet.Where(predicate).ToListAsync()
-                : await DbSet.ToListAsync();            
+            var result = DbContext.Set<T>().Update(entity);
+            result.State = EntityState.Modified;
+            await DbContext.SaveChangesAsync().ConfigureAwait(false);
+            return result.Entity;
         }
 
-        public async Task<T> GetAsync(Expression<Func<T, bool>> predicate = null)
+        private IQueryable<T> GetQueryFromPredicate(Expression<Func<T, bool>> predicate)
         {
-            return predicate != null
-                ? await DbSet.Where(predicate).FirstOrDefaultAsync()
-                : await DbSet.FirstOrDefaultAsync();
-        }
-        public async Task<IList<T>> GetAllIncludeAsync(IList<string> include, Expression<Func<T, bool>> predicate = null)
-        {
-            return await DbSetWithProperties(include, predicate).ToListAsync();
+            return predicate != null ? DbContext.Set<T>().AsNoTracking().Where(predicate) : DbContext.Set<T>().AsNoTracking();
         }
 
-        public async Task<PaginationResult<T>> GetAllIncludePagedAsync(int currentPage, int pageSize, IList<string> include, Expression<Func<T, bool>> predicate = null)
+        private IQueryable<T> GetResultSetWithNestedProperties(IList<string> includedNestedFiels, Expression<Func<T, bool>> predicate = null)
         {
-            return await DbSetWithPropertiesPagedAsync(currentPage,pageSize, include, predicate);
+            return includedNestedFiels.Aggregate(GetQueryFromPredicate(predicate), (current, property) => current.Include(property));
         }
 
-        public async Task<PaginationResult<T>> GetPagedAsync(int currentPage, int pageSize, Expression<Func<T, bool>> predicate = null)
+        private Task<PaginationResult<T>> GetResultSetWithNestedPropertiesPaged(int currentPage, int pageSize, IList<string> includedNestedFiels, Expression<Func<T, bool>> predicate = null)
         {
-            var result = predicate != null ? DbSet.Where(predicate): DbSet;
-            return await GetPaginationResultAsync(currentPage, pageSize, result);
+            return GetPagedResult(currentPage, pageSize, GetResultSetWithNestedProperties(includedNestedFiels, predicate));
         }
 
-        #endregion
-
-        #region private methods
-        private PaginationResult<T> GetPaginationResult(int currentPage, int pageSize, ref IQueryable<T> resultList)
+        private async Task<PaginationResult<T>> GetPagedResult(int currentPage, int pageSize, IQueryable<T> resultList)
         {
-            var paginationResult = new PaginationResult<T>() { CurrentPage = currentPage, PageSize = pageSize, RowCount = resultList.Count() };
+            var pagedResult = new PaginationResult<T>() { CurrentPage = currentPage, PageSize = pageSize, RowCount = resultList.Count() };
 
-            var pageCount = (double)paginationResult.RowCount / pageSize;
-            paginationResult.PageCount = (int)Math.Ceiling(pageCount);
+            var pageCount = (double)pagedResult.RowCount / pageSize;
+            pagedResult.PageCount = (int)Math.Ceiling(pageCount);
 
             var skip = (currentPage - 1) * pageSize;
-            paginationResult.Results = resultList.Skip(skip).Take(pageSize).ToList();
+            pagedResult.Results = await resultList.Skip(skip).Take(pageSize).ToListAsync().ConfigureAwait(false);
 
-            return paginationResult;
+            return pagedResult;
         }
 
-        private IQueryable<T> DbSetWithProperties(IList<string> properties, Expression<Func<T, bool>> predicate = null)
+        internal void SetContext(DbContext context)
         {
-            IQueryable<T> queryable = predicate != null ? DbSet.Where(predicate) : DbSet;
-            return properties.Aggregate(queryable, (current, property) => current.Include(property));
+            DbContext = context ?? throw new ContextNullException(nameof(context));
         }
-
-        private PaginationResult<T> DbSetWithPropertiesPaged(int currentPage, int pageSize, IList<string> properties, Expression<Func<T, bool>> predicate = null)
-        {
-            IQueryable<T> queryable = predicate != null ? DbSet.Where(predicate) : DbSet;
-            var queryResult = properties.Aggregate(queryable, (current, property) => current.Include(property));
-            return GetPaginationResult(currentPage, pageSize, ref queryResult);
-        }
-
-        private async Task<PaginationResult<T>> DbSetWithPropertiesPagedAsync(int currentPage, int pageSize, IList<string> properties, Expression<Func<T, bool>> predicate = null)
-        {
-            IQueryable<T> queryable = predicate != null ? DbSet.Where(predicate) : DbSet;
-            var queryResult = properties.Aggregate(queryable, (current, property) => current.Include(property));
-            return await GetPaginationResultAsync(currentPage, pageSize, queryResult);
-        }
-
-        private async Task<PaginationResult<T>> GetPaginationResultAsync(int currentPage, int pageSize, IQueryable<T> resultList)
-        {
-            var paginationResult = new PaginationResult<T>() { CurrentPage = currentPage, PageSize = pageSize, RowCount = resultList.Count() };
-
-            var pageCount = (double)paginationResult.RowCount / pageSize;
-            paginationResult.PageCount = (int)Math.Ceiling(pageCount);
-            
-            var skip = (currentPage - 1) * pageSize;
-            paginationResult.Results = await resultList.Skip(skip).Take(pageSize).ToListAsync();
-            
-            return paginationResult;
-        }
-        #endregion
-
-
     }
 }

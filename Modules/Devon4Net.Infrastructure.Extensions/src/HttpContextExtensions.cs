@@ -23,5 +23,20 @@ namespace Devon4Net.Infrastructure.Extensions
                 return false;
             }
         }
+        
+        public static bool TryRemoveHeader(this HttpContext httpContext, string headerName)
+        {
+            if (httpContext == null) throw new ArgumentNullException(nameof(httpContext));
+            if (!httpContext.ResponseContainsHeader(headerName)) return true;
+            try
+            {
+                httpContext.Response.Headers.Remove(headerName);
+                return true;
+            }
+            catch (ArgumentException)
+            {
+                return false;
+            }
+        }
     }
 }

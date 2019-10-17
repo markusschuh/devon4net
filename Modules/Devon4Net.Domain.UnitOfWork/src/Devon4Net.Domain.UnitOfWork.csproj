@@ -1,38 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <Authors>Capgemini Valencia Spain</Authors>
-    <Company>Capgemini S.A.</Company>
-    <Product>devonfw4NET</Product>
-    <PackageLicenseUrl>https://oasp.github.io/TermsOfUse</PackageLicenseUrl>
-    <PackageProjectUrl>http://www.devonfw.com/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/oasp/oasp4net</RepositoryUrl>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageIconUrl>https://avatars2.githubusercontent.com/u/7803029?s=200amp;v=4</PackageIconUrl>
-    <Copyright>Capgemini S.A.</Copyright>
-    <PackageTags>Capgemini devonfw devonfw4NET Traiectum UnitOfWork UoW Repository</PackageTags>
-    <Description>Unit of work implementation for devonfw solution. This unit of work provides the different methods to access the data layer with an atomic context. Sync and Async repository operations are provided. Customized Eager Loading method also provided for custom entity properties.</Description>
-    <Version>1.0.1</Version>
-    <AssemblyVersion>2.1.0.0</AssemblyVersion>
-    <FileVersion>2.1.0.0</FileVersion>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+    </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE;DEBUG;NETSTANDARD2_0</DefineConstants>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Repository\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.11" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Devon4Net.Domain.Context\src\Devon4Net.Domain.Context.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="3.0.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.0.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.0.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.0.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
+      <PackageReference Include="System.Linq.Expressions" Version="4.3.0" />
+    </ItemGroup>
 
 </Project>
