@@ -1,153 +1,112 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Devon4Net.Domain.Context;
+using Devon4Net.Domain.UnitOfWork.Exceptions;
 using Devon4Net.Domain.UnitOfWork.Repository;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Devon4Net.Domain.UnitOfWork.UnitOfWork
 {
-
-    public class UnitOfWork<TContext> : IUnitOfWork<TContext> where TContext : Devon4NetBaseContext
-
+    public class UnitOfWork<TContext> : IUnitOfWork<TContext> where TContext : DbContext, IDisposable
     {
-        public virtual IDictionary<Type, object> Repositories { get; set; }
-
-        private bool Disposed { get; set; }
         private TContext Context { get; }
+        private IServiceProvider ServiceProvider { get; }
 
-        public UnitOfWork(TContext context)
+        public UnitOfWork(TContext context, IServiceProvider serviceProvider)
         {
-            Context = context;
-            Repositories = new Dictionary<Type, object>();
+            Context = context ?? throw new ContextNullException(nameof(context));
+            ServiceProvider = serviceProvider;
         }
 
-        public virtual IRepository<T> Repository<T>() where T : class
+        public Task<IDbContextTransaction> BeginTransaction()
         {
-            if (Repositories.Keys.Contains(typeof(T)))
-            {
-                return Repositories[typeof(T)] as IRepository<T>;
-            }
+            return Context.Database.BeginTransactionAsync();
+        }
 
-            IRepository<T> repository = new Repository<T>(Context);
-            Repositories.Add(typeof(T), repository);
+        public Task Rollback(IDbContextTransaction transaction)
+        {
+            return Task.Run(() => RollbackTransaction(transaction));
+        }
+
+        public IExecutionStrategy CreateExecutionStrategy()
+        {
+            return Context.Database.CreateExecutionStrategy();
+        }
+
+        public Task Commit(IDbContextTransaction transaction)
+        {
+            return Task.Run(() =>
+             {
+                 if (transaction == null)
+                 {
+                     throw new TransactionNullException($"Transaction cannot be null to perform transaction operations.");
+                 }
+                 try
+                 {
+                     transaction.Commit();
+                 }
+                 catch (DbUpdateConcurrencyException ex)
+                 {
+                     Console.WriteLine($"{ex.Message}:{ex.InnerException}");
+                     RollbackTransaction(transaction);
+                     throw;
+                 }
+                 catch (Exception ex)
+                 {
+                     Console.WriteLine($"{ex.Message}:{ex.InnerException}");
+                     RollbackTransaction(transaction);
+                     throw;
+                 }
+             });
+        }
+
+        /// <summary>
+        /// ets the typed repository class
+        /// </summary>
+        /// <typeparam name="T">The inherited repository class</typeparam>
+        /// <returns>The instantiated repository class</returns>
+        public T Repository<T>() where T : class
+        {
+            return GetRepository<T>();
+        }
+
+        /// <summary>
+        /// Gets the typed repository class and sets the database context
+        /// </summary>
+        /// <typeparam name="T">The inherited repository class</typeparam>
+        /// <typeparam name="TS">The entity class</typeparam>
+        /// <returns>The instantiated repository class</returns>
+        public T Repository<T,TS>() where T : class where TS : class
+        {
+            var repository = GetRepository<T>();
+
+            (repository as Repository<TS>)?.SetContext(Context);
+
             return repository;
         }
 
-
-        #region async methods
-
-        public async Task<int> CommitAsync()
+        private void RollbackTransaction(IDbContextTransaction transaction)
         {
-            int result;
-            var transaction = await Context.Database.BeginTransactionAsync();
+            if (transaction == null)
             {
-                try
-                {
-                    result = await Context.SaveChangesAsync();
-                    transaction.Commit();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"{ex.Message}:{ex.InnerException}");
-                    transaction.Rollback();
-                    throw ex;
-                }
-
-            }
-            return result;
-        }
-
-
-
-        #endregion
-
-        #region sync methods
-
-        public int Commit()
-        {
-            var result = int.MinValue;
-
-            using (var transaction = Context.Database.BeginTransaction())
-            {
-                try
-                {
-                    result = Context.SaveChanges();
-                    transaction.Commit();                    
-                }
-                catch (DbUpdateConcurrencyException ex)
-                {
-                    foreach (var entry in ex.Entries)
-                    {
-                        Console.WriteLine($"Error: concurrency conflicts for {entry.Metadata.Name}");
-                        var proposedValues = entry.CurrentValues;
-                            var databaseValues = entry.GetDatabaseValues();
-
-                            foreach (var property in proposedValues.Properties)
-                            {
-                                var proposedValue = proposedValues[property];
-                                var databaseValue = databaseValues[property];
-
-                                Console.WriteLine($"Proposed value: { proposedValues[property]} | Data base value: { databaseValues[property] }");
-                            }
-
-                            // Refresh original values to bypass next concurrency check
-                            entry.OriginalValues.SetValues(databaseValues);        
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"{ex.Message}:{ex.InnerException}");
-                    transaction.Rollback();
-                    throw ex;
-                }                
-            }
-            return result;
-        }
-
-        #endregion
-
-        #region dispose
-
-        public void Dispose()
-        {
-            Dispose(true);
-            //GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (Disposed) return;
-            if (disposing)
-            {
-                try
-                {
-                    Context?.Dispose();
-                }
-                catch (ObjectDisposedException ex)
-                {
-                    Console.WriteLine($"{ex.Message}:{ex.InnerException}");
-                    // do nothing, the objectContext has already been disposed
-                }
+                throw new TransactionNullException($"Transaction cannot be null to perform transaction operations.");
             }
 
-            Disposed = true;
+            transaction.Rollback();
+            transaction.Dispose();
         }
 
-        #endregion
-
-        #region rollback
-
-        public void Rollback()
+        private T GetRepository<T>() where T : class
         {
-            Context
-                .ChangeTracker
-                .Entries()
-                .ToList()
-                .ForEach(x => x.Reload());
-        }
+            var repositoryType = typeof(T);
+            var repository = ServiceProvider.GetService(repositoryType);
 
-        #endregion
+            if (repository == null)
+            {
+                throw new RepositoryNotFoundException($"The repository {repositoryType.Name} was not found in the IOC container. Plase register the repository during startup.");
+            }
+
+            return repository as T;
+        }
     }
 }

@@ -1,16 +1,15 @@
+using Microsoft.Extensions.Logging;
+using System;
+using System.IO;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text.Json;
+using System.Threading.Tasks;
+
 namespace Devon4Net.Infrastructure.CircuitBreaker.Handler
 {
-    using Microsoft.Extensions.Logging;
-    using Newtonsoft.Json;
-    using System;
-    using System.IO;
-    using System.Net.Http;
-    using System.Net.Http.Headers;
-    using System.Threading.Tasks;
-
     public class CircuitBreakerHttpClient : ICircuitBreakerHttpClient
     {
-        private readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects, Formatting = Formatting.None };
         private IHttpClientFactory HttpClientFactory { get; set; }
         private ILogger Logger { get; set; }
         public CircuitBreakerHttpClient(IHttpClientFactory httpClientFactory)
@@ -25,7 +24,7 @@ namespace Devon4Net.Infrastructure.CircuitBreaker.Handler
             Logger = logger;
         }
 
-        public async Task<string> GetAsync(string endPointName, string url)
+        public async Task<string> Get(string endPointName, string url)
         {
             HttpClient httpClient = null;
             HttpResponseMessage httpResponseMessage = null;
@@ -67,7 +66,7 @@ namespace Devon4Net.Infrastructure.CircuitBreaker.Handler
             return result;
         }
 
-        public async Task<Stream> GetAsStreamAsync(string endPointName, string url)
+        public async Task<Stream> GetAsStream(string endPointName, string url)
         {
             Stream result = null;
             HttpClient httpClient = null;
@@ -108,7 +107,7 @@ namespace Devon4Net.Infrastructure.CircuitBreaker.Handler
             return result;
         }
 
-        public async Task<T> PostAsync<T>(string endPointName, string url, object dataToSend, string mediaType)
+        public async Task<T> Post<T>(string endPointName, string url, object dataToSend, string mediaType)
         {
             T result;
             var httpResult = string.Empty;
@@ -140,7 +139,7 @@ namespace Devon4Net.Infrastructure.CircuitBreaker.Handler
 
                     if (errorHttp) throw new HttpRequestException($"The httprequest to {endPointName} was not successful.");
 
-                    result = JsonConvert.DeserializeObject<T>(httpResult);
+                    result = Deserialize<T>(httpResult);
                 }
             }
             catch (Exception ex)
@@ -158,7 +157,7 @@ namespace Devon4Net.Infrastructure.CircuitBreaker.Handler
             return result;
         }
 
-        public async Task<T> PutAsync<T>(string endPointName, string url, object dataToSend, string mediaType)
+        public async Task<T> Put<T>(string endPointName, string url, object dataToSend, string mediaType)
         {
             T result;
             var httpResult = string.Empty;
@@ -189,7 +188,7 @@ namespace Devon4Net.Infrastructure.CircuitBreaker.Handler
 
                     if (errorHttp) throw new HttpRequestException($"The httprequest to {endPointName} was not successful.");
 
-                    result = JsonConvert.DeserializeObject<T>(httpResult);
+                    result = Deserialize<T>(httpResult);
                 }
             }
             catch (Exception ex)
@@ -208,7 +207,7 @@ namespace Devon4Net.Infrastructure.CircuitBreaker.Handler
 
         }
 
-        public async Task<string> DeleteAsync(string endPointName, string url)
+        public async Task<string> Delete(string endPointName, string url)
         {
             HttpClient httpClient = null;
             HttpResponseMessage httpResponseMessage = null;
@@ -250,7 +249,7 @@ namespace Devon4Net.Infrastructure.CircuitBreaker.Handler
             return result;
         }
 
-        public async Task<HttpResponseMessage> PatchAsync(string endPointName, string url, HttpContent content)
+        public async Task<HttpResponseMessage> Patch(string endPointName, string url, HttpContent content)
         {
             HttpClient httpClient = null;
             HttpResponseMessage result = null;
@@ -290,7 +289,7 @@ namespace Devon4Net.Infrastructure.CircuitBreaker.Handler
 
         private HttpContent CreateJsonHttpContent<T>(T requestContent, string mediaType)
         {
-            var requestBody = JsonConvert.SerializeObject(requestContent, JsonSerializerSettings);
+            var requestBody = Serialize(requestContent);
             HttpContent httpContent = new StringContent(requestBody);
             httpContent.Headers.ContentType = new MediaTypeHeaderValue(mediaType);
             return httpContent;
@@ -309,6 +308,16 @@ namespace Devon4Net.Infrastructure.CircuitBreaker.Handler
         private void LogException(ref Exception exception)
         {
             LogErrorMessage($"{exception.Message} : {exception.InnerException}");
+        }
+
+        private string Serialize(object toPrint)
+        {
+            return JsonSerializer.Serialize(toPrint);
+        }
+
+        private T Deserialize<T>(string input)
+        {
+            return JsonSerializer.Deserialize<T>(input);
         }
     }
 }

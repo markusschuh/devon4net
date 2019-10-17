@@ -6,11 +6,11 @@ namespace Devon4Net.Infrastructure.CircuitBreaker.Handler
 
     public interface ICircuitBreakerHttpClient
     {
-        Task<string> DeleteAsync(string endPointName, string url);
-        Task<Stream> GetAsStreamAsync(string endPointName, string url);
-        Task<string> GetAsync(string endPointName, string url);
-        Task<HttpResponseMessage> PatchAsync(string endPointName, string url, HttpContent content);
-        Task<T> PostAsync<T>(string endPointName, string url, object dataToSend, string mediaType);
-        Task<T> PutAsync<T>(string endPointName, string url, object dataToSend, string mediaType);
+        Task<string> Delete(string endPointName, string url);
+        Task<Stream> GetAsStream(string endPointName, string url);
+        Task<string> Get(string endPointName, string url);
+        Task<HttpResponseMessage> Patch(string endPointName, string url, HttpContent content);
+        Task<T> Post<T>(string endPointName, string url, object dataToSend, string mediaType);
+        Task<T> Put<T>(string endPointName, string url, object dataToSend, string mediaType);
     }
 }

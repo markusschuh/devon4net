@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Threading.Tasks;
 using Devon4Net.Infrastructure.Extensions;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace Devon4Net.Infrastructure.Middleware.Headers
 {
@@ -16,9 +16,9 @@ namespace Devon4Net.Infrastructure.Middleware.Headers
             _next = next;
         }
 
-        public Task InvokeAsync(HttpContext context)
+        public async Task Invoke(HttpContext context)
         {
-            if (context.Request.Method.ToLower()=="options") return this._next(context);
+            if (context.Request.Method.ToLower() == "options") await _next(context);
 
             if (!string.IsNullOrEmpty(MiddlewareHeaderDefinition.StrictTransportSecurityHeader))
             {
@@ -55,7 +55,11 @@ namespace Devon4Net.Infrastructure.Middleware.Headers
                 context.TryAddHeader(CustomMiddlewareHeaderTypeConst.ReferrerPolicyHeader, MiddlewareHeaderDefinition.ReferrerPolicyHeader);
             }
 
-            return this._next(context);
+            context.TryRemoveHeader(CustomMiddlewareHeaderTypeConst.ServerHeader);
+            context.TryRemoveHeader(CustomMiddlewareHeaderTypeConst.AspNetVersion);
+            context.TryRemoveHeader(CustomMiddlewareHeaderTypeConst.XPowered);
+            
+            await _next(context).ConfigureAwait(false);
         }
     }
 }
