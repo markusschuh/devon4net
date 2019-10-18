@@ -4,4 +4,15 @@
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Business\TodoManagement\Controllers\" />
+    <Folder Include="Business\TodoManagement\Dto\" />
+    <Folder Include="Business\TodoManagement\Service\" />
+    <Folder Include="Data\Repositories\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
+  </ItemGroup>
+
 </Project>

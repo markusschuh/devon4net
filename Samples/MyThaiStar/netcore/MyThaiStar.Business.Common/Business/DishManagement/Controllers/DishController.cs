@@ -21,7 +21,7 @@ namespace MyThaiStar.Common.Business.DishManagement.Controller
         /// Initialization
         /// </summary>
         public DishController()
-        { 
+        {
         }
 
         /// <summary>
@@ -40,4 +40,4 @@ namespace MyThaiStar.Common.Business.DishManagement.Controller
             return result;
         }
     }
-    }
+}
