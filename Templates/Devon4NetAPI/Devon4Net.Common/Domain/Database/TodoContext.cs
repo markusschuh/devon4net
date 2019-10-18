@@ -31,6 +31,6 @@ namespace Devon4Net.Common.Domain.Database
                     .IsRequired()
                     .HasMaxLength(255);
             });
-        }
+        }        
     }
 }

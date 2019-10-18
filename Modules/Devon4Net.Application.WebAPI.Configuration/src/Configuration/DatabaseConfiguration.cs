@@ -9,14 +9,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Devon4Net.Application.WebAPI.Configuration.Configuration
+namespace Devon4Net.Application.WebAPI.Configuration
 {
-    public static class DatabaseConfiguration
+    public static class SetupDatabaseConfiguration
     {
         private const int MaxRetryDelay = 30;
         private const int MaxRetryCount = 10;
 
-        public static void ConfigureDatabase<T>(this IServiceCollection services, ref IConfiguration configuration, string conectionStringName, DatabaseType databaseType, CosmosConfigurationParams cosmosConfigurationParams = null) where T : DbContext 
+        public static void SetupDatabase<T>(this IServiceCollection services, IConfiguration configuration, string conectionStringName, DatabaseType databaseType, CosmosConfigurationParams cosmosConfigurationParams = null) where T : DbContext 
         {
             var applicationConnectionStrings = configuration.GetSection("ConnectionStrings").GetChildren();
             if (applicationConnectionStrings == null) throw new ArgumentException("There are no connection strings provided.");
