@@ -79,6 +79,8 @@ namespace Devon4Net.Application.WebAPI.Configuration
                 case DatabaseType.MSAccess:
                     services.AddDbContext<T>(options => options.UseJet(connectionString.Value));
                     break;
+                default:
+                    throw new ArgumentException("Not provided a database driver");
             }
         }
     }

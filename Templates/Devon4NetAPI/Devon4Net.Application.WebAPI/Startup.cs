@@ -46,8 +46,6 @@ namespace Devon4Net.Application.WebAPI
 
         private void SetupDatabase(IServiceCollection services)
         {
-            //services.AddDbContext<TodoContext>(op=>op.UseInMemoryDatabase("Todos"));
-
             services.SetupDatabase<TodoContext>(Configuration, "Default", WebAPI.Configuration.Enums.DatabaseType.InMemory);
         }
 
