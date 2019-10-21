@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Devon4Net.Common.Domain.Entities;
 using Devon4Net.Domain.UnitOfWork.Repository;
 
-namespace Devon4Net.Common.Domain.RepositoryInterfaces.TodoManagement
+namespace Devon4Net.Common.Domain.RepositoryInterfaces
 {
     public interface ITodoRepository : IRepository<Todos>
     {

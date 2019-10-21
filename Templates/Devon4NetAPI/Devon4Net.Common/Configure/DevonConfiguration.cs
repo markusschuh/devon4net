@@ -1,6 +1,6 @@
 ﻿using Devon4Net.Common.Business.TodoManagement.Service;
 using Devon4Net.Common.Data.Repositories;
-using Devon4Net.Common.Domain.RepositoryInterfaces.TodoManagement;
+using Devon4Net.Common.Domain.RepositoryInterfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Devon4Net.Common.Configure

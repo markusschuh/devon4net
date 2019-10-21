@@ -7,7 +7,7 @@ using Devon4Net.Common.Business.TodoManagement.Converters;
 using Devon4Net.Common.Business.TodoManagement.Dto;
 using Devon4Net.Common.Domain.Database;
 using Devon4Net.Common.Domain.Entities;
-using Devon4Net.Common.Domain.RepositoryInterfaces.TodoManagement;
+using Devon4Net.Common.Domain.RepositoryInterfaces;
 using Devon4Net.Domain.UnitOfWork.Service;
 using Devon4Net.Domain.UnitOfWork.UnitOfWork;
 using Devon4Net.Infrastructure.Log;
