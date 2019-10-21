@@ -4,18 +4,6 @@
         <name>Devon4Net.Application.WebAPI</name>
     </assembly>
     <members>
-        <member name="M:Devon4Net.Application.WebAPI.Controllers.WeatherForecastController.Get">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Devon4Net.Application.WebAPI.Controllers.WeatherForecastController.GetJwtToken">
-            <summary>
-            Gets a sample of jwt
-            </summary>
-            <returns></returns>
-        </member>
         <member name="T:Devon4Net.Application.WebAPI.Program">
             <summary>
             devonfw template

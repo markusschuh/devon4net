@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System;
 using Devon4Net.Common.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Devon4Net.Common.Domain.Database
 {
-    public class TodoContext : DbContext
+    public partial class TodoContext : DbContext
     {
         public TodoContext()
         {

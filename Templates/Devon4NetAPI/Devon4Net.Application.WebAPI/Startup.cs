@@ -1,4 +1,5 @@
 using Devon4Net.Application.WebAPI.Configuration;
+using Devon4Net.Common.Domain.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +35,12 @@ namespace Devon4Net.Application.WebAPI
             services.AddMvc(option => option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddControllers();
             services.AddOptions();
+            SetupDatabase(services);
+        }
+
+        private void SetupDatabase(IServiceCollection services)
+        {
+            services.SetupDatabase<TodoContext>(Configuration, "Default", WebAPI.Configuration.Enums.DatabaseType.InMemory);
         }
 
         /// <summary>

@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Devon4Net.Common.Domain.Entities
+﻿namespace Devon4Net.Common.Domain.Entities
 {
+    /// <summary>
+    /// Entity class for Todos
+    /// </summary>
     public partial class Todos
     {
         public long Id { get; set; }
