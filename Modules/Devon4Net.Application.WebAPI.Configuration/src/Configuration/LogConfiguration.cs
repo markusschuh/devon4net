@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Logging;
 using Devon4Net.Infrastructure.Log.Attribute;
 using Serilog;
 using Serilog.Events;
@@ -8,7 +7,6 @@ using System;
 using Devon4Net.Infrastructure.Common.Options.Log;
 using Devon4Net.Infrastructure.Common;
 using System.IO;
-using System.Text.RegularExpressions;
 
 namespace Devon4Net.Application.WebAPI.Configuration
 {
@@ -36,8 +34,8 @@ namespace Devon4Net.Application.WebAPI.Configuration
 
         private static void SetupLogAop(ref IServiceCollection services, LogOptions logOptions)
         {
-            services.AddScoped<AopControllerAttribute>();
-            services.AddScoped<AopExceptionFilterAttribute>();
+            services.AddTransient<AopControllerAttribute>();
+            services.AddTransient<AopExceptionFilterAttribute>();
 
             services.AddMvc(options =>
             {
@@ -52,28 +50,25 @@ namespace Devon4Net.Application.WebAPI.Configuration
 
         public static void ConfigureLog(LogOptions logOptions)
         {
-            LoggerConfiguration = new LoggerConfiguration()
-                    .MinimumLevel.Override("Microsoft", GetLogLevel(logOptions.LogLevel))
-                    .Enrich.FromLogContext();
-
             var logFile = logOptions.LogFile != null ? string.Format(logOptions.LogFile, DateTime.Today.ToShortDateString().Replace("/", string.Empty)) : DefaultLogFile;
 
+            LoggerConfiguration = new LoggerConfiguration()
+                    .MinimumLevel.Override("Microsoft", GetLogLevel(logOptions.LogLevel))
+                    .Enrich.FromLogContext()
+                    .WriteTo.Console()
+                    .WriteTo.File(GetValidPath(logFile, DefaultLogFile));
 
-            LoggerConfiguration = LoggerConfiguration.WriteTo.File(GetValidPath(logFile, DefaultLogFile));
-
-
-            if (!String.IsNullOrEmpty(logOptions.SeqLogServerHost))
+            if (!string.IsNullOrEmpty(logOptions.SeqLogServerHost))
             {
                 LoggerConfiguration = LoggerConfiguration.WriteTo.Seq(logOptions.SeqLogServerHost);
             }
 
-            if (!String.IsNullOrEmpty(logOptions.SqliteDatabase))
+            if (!string.IsNullOrEmpty(logOptions.SqliteDatabase))
             {
                 LoggerConfiguration = LoggerConfiguration.WriteTo.SQLite(GetValidPath(logOptions.SqliteDatabase, DefaultSqliteFile));
             }
 
-            Serilog.Log.Logger = LoggerConfiguration.CreateLogger(); ;
-
+            Serilog.Log.Logger = LoggerConfiguration.CreateLogger();
         }
 
         private static void SetupGraylog(GraylogOptions graylogOptions)

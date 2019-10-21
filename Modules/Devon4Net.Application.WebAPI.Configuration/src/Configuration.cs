@@ -1,11 +1,11 @@
-﻿using Devon4Net.Infrastructure.Common.Options.CircuitBreaker;
+﻿using Devon4Net.Domain.UnitOfWork.Repository;
+using Devon4Net.Domain.UnitOfWork.UnitOfWork;
+using Devon4Net.Infrastructure.Common.Options.CircuitBreaker;
 using Devon4Net.Infrastructure.Common.Options.Cors;
 using Devon4Net.Infrastructure.Common.Options.Devon;
 using Devon4Net.Infrastructure.Common.Options.JWT;
 using Devon4Net.Infrastructure.Common.Options.KillSwitch;
 using Devon4Net.Infrastructure.Common.Options.Swagger;
-using Devon4Net.Infrastructure.Middleware.Certificates;
-using Devon4Net.Infrastructure.Middleware.Exception;
 using Devon4Net.Infrastructure.Middleware.Headers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,6 +27,9 @@ namespace Devon4Net.Application.WebAPI.Configuration
 
         public static void ConfigureDevonFw(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+            services.AddTransient(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
+
             services.Configure<DevonfwOptions>(configuration.GetSection("devonfw"));
             services.Configure<SwaggerOptions>(configuration.GetSection("Swagger"));
             services.Configure<JwtOptions>(configuration.GetSection("JWT"));
@@ -42,7 +45,7 @@ namespace Devon4Net.Application.WebAPI.Configuration
             if (DevonfwOptions!=null && DevonfwOptions.UseSwagger) SetupSwagger(ref services);
             SetupJwt(ref services);
             SetupCors(ref services);
-            SetupCircuitbreaker(ref services);
+            SetupCircuitBreaker(ref services);
             configuration.SetupHeaders();
             SetupLog(ref services);
         }
@@ -80,7 +83,7 @@ namespace Devon4Net.Application.WebAPI.Configuration
             }
         }
 
-        private static void SetupCircuitbreaker(ref IServiceCollection services)
+        private static void SetupCircuitBreaker(ref IServiceCollection services)
         {
             CircuitBreakerOptions = ServiceProvider.GetService<IOptions<CircuitBreakerOptions>>()?.Value;
             if (CircuitBreakerOptions == null) return;

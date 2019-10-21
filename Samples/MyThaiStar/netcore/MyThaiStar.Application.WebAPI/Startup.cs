@@ -1,59 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Devon4Net.Application.WebAPI.Configuration;
-using Devon4Net.Common.Configure;
-using Devon4Net.Common.Domain.Database;
-using Devon4Net.Domain.UnitOfWork.Repository;
-using Devon4Net.Domain.UnitOfWork.UnitOfWork;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
-namespace Devon4Net.Application.WebAPI
+namespace MyThaiStar
 {
-    /// <summary>
-    /// devonfw startup
-    /// </summary>
     public class Startup
     {
-        private IConfiguration Configuration { get; }
-
-        /// <summary>
-        /// Configuration variable with all settings file loaded
-        /// </summary>
-        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
- 
-        /// <summary>
-        /// This method gets called by the runtime. Use this method to add services to the container. 
-        /// </summary>
-        /// <param name="services"></param>
+
+        public IConfiguration Configuration { get; }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.ConfigureDevonFw(Configuration);
-            SetupDatabase(services);
-            services.SetupDevonDependencyInjection();
             services.AddMvc(option => option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddControllers();
             services.AddOptions();
         }
 
-        private void SetupDatabase(IServiceCollection services)
-        {
-            services.SetupDatabase<TodoContext>(Configuration, "Default", WebAPI.Configuration.Enums.DatabaseType.InMemory);
-        }
-
-        /// <summary>
-        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        /// </summary>
-        /// <param name="app">app net param</param>
-        /// <param name="env">environment param</param>
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -64,7 +42,7 @@ namespace Devon4Net.Application.WebAPI
             {
                 app.UseHsts();
             }
-            
+
             app.ConfigureDevonFw();
             app.UseMvc();
             app.UseHttpsRedirection();

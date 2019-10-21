@@ -28,6 +28,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\..\modules\Devon4Net.Application.WebAPI.Configuration\src\Devon4Net.Application.WebAPI.Configuration.csproj" />
       <ProjectReference Include="..\..\..\modules\Devon4Net.Infrastructure.Common\src\Devon4Net.Infrastructure.Common.csproj" />
+      <ProjectReference Include="..\Devon4Net.Common\Devon4Net.Common.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -49,9 +50,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="Devon4Net.Application.WebAPI.xml">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
       <None Update="Certificates\localhost.crt">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
@@ -67,6 +65,10 @@
       <None Update="Certificates\RootCA.crt">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="logs\" />
     </ItemGroup>
 
 </Project>

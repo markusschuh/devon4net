@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Devon4Net.Domain.UnitOfWork.Repository
 {
-    public abstract class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : class
     {
         private DbContext DbContext { get; set; }
 
