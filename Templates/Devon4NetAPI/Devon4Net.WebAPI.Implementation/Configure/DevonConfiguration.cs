@@ -1,9 +1,9 @@
-﻿using Devon4Net.Common.Business.TodoManagement.Service;
-using Devon4Net.Common.Data.Repositories;
-using Devon4Net.Common.Domain.RepositoryInterfaces;
+﻿using Devon4Net.WebAPI.Implementation.Business.TodoManagement.Service;
+using Devon4Net.WebAPI.Implementation.Data.Repositories;
+using Devon4Net.WebAPI.Implementation.Domain.RepositoryInterfaces;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Devon4Net.Common.Configure
+namespace Devon4Net.WebAPI.Implementation.Configure
 {
     public static class DevonConfiguration
     {

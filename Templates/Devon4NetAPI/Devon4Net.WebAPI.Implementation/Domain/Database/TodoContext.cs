@@ -1,7 +1,7 @@
-using Devon4Net.Common.Domain.Entities;
+using Devon4Net.WebAPI.Implementation.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Devon4Net.Common.Domain.Database
+namespace Devon4Net.WebAPI.Implementation.Domain.Database
 {
     public class TodoContext : DbContext
     {

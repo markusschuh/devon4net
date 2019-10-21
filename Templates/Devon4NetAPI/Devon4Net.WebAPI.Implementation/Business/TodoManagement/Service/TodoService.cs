@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Devon4Net.Common.Business.TodoManagement.Converters;
-using Devon4Net.Common.Business.TodoManagement.Dto;
-using Devon4Net.Common.Domain.Database;
-using Devon4Net.Common.Domain.Entities;
-using Devon4Net.Common.Domain.RepositoryInterfaces;
 using Devon4Net.Domain.UnitOfWork.Service;
 using Devon4Net.Domain.UnitOfWork.UnitOfWork;
 using Devon4Net.Infrastructure.Log;
+using Devon4Net.WebAPI.Implementation.Business.TodoManagement.Converters;
+using Devon4Net.WebAPI.Implementation.Business.TodoManagement.Dto;
+using Devon4Net.WebAPI.Implementation.Domain.Database;
+using Devon4Net.WebAPI.Implementation.Domain.Entities;
+using Devon4Net.WebAPI.Implementation.Domain.RepositoryInterfaces;
 
-namespace Devon4Net.Common.Business.TodoManagement.Service
+namespace Devon4Net.WebAPI.Implementation.Business.TodoManagement.Service
 {
     public class TodoService: Service<TodoContext>, ITodoService
     {

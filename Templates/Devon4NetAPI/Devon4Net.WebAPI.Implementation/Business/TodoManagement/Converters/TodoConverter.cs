@@ -1,7 +1,7 @@
-﻿using Devon4Net.Common.Business.TodoManagement.Dto;
-using Devon4Net.Common.Domain.Entities;
+﻿using Devon4Net.WebAPI.Implementation.Business.TodoManagement.Dto;
+using Devon4Net.WebAPI.Implementation.Domain.Entities;
 
-namespace Devon4Net.Common.Business.TodoManagement.Converters
+namespace Devon4Net.WebAPI.Implementation.Business.TodoManagement.Converters
 {
     public static class TodoConverter
     {
