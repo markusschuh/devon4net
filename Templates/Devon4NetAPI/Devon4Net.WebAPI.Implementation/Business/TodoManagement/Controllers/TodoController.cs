@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Devon4Net.Common.Business.TodoManagement.Dto;
-using Devon4Net.Common.Business.TodoManagement.Service;
 using Devon4Net.Infrastructure.Log;
+using Devon4Net.WebAPI.Implementation.Business.TodoManagement.Dto;
+using Devon4Net.WebAPI.Implementation.Business.TodoManagement.Service;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Devon4Net.Common.Business.TodoManagement.Controllers
+namespace Devon4Net.WebAPI.Implementation.Business.TodoManagement.Controllers
 {
     [ApiController]
     [Route("[controller]")]

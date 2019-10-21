@@ -2,19 +2,17 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Devon4Net.Common.Business.TodoManagement.Service;
-using Devon4Net.Common.Domain.Database;
-using Devon4Net.Common.Domain.Entities;
-using Devon4Net.Common.Domain.RepositoryInterfaces.TodoManagement;
 using Devon4Net.Domain.UnitOfWork.Repository;
 using Devon4Net.Infrastructure.Log;
-using Microsoft.Extensions.Logging;
+using Devon4Net.WebAPI.Implementation.Domain.Database;
+using Devon4Net.WebAPI.Implementation.Domain.Entities;
+using Devon4Net.WebAPI.Implementation.Domain.RepositoryInterfaces;
 
-namespace Devon4Net.Common.Data.Repositories
+namespace Devon4Net.WebAPI.Implementation.Data.Repositories
 {
     public class TodoRepository : Repository<Todos>, ITodoRepository
     {
-        public TodoRepository(TodoContext context, ILogger<TodoService> logger) : base(context)
+        public TodoRepository(TodoContext context) : base(context)
         {
         }
 

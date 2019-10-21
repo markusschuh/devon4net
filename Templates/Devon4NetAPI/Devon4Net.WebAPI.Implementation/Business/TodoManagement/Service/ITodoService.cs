@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Devon4Net.Common.Business.TodoManagement.Dto;
-using Devon4Net.Common.Domain.Entities;
+using Devon4Net.WebAPI.Implementation.Business.TodoManagement.Dto;
+using Devon4Net.WebAPI.Implementation.Domain.Entities;
 
-namespace Devon4Net.Common.Business.TodoManagement.Service
+namespace Devon4Net.WebAPI.Implementation.Business.TodoManagement.Service
 {
     public interface ITodoService
     {

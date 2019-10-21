@@ -1,4 +1,4 @@
-﻿namespace Devon4Net.Common.Domain.Entities
+﻿namespace Devon4Net.WebAPI.Implementation.Domain.Entities
 {
     /// <summary>
     /// Entity class for Todos

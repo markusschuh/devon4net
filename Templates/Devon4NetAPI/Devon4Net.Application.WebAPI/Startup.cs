@@ -1,12 +1,9 @@
 using Devon4Net.Application.WebAPI.Configuration;
-using Devon4Net.Common.Configure;
-using Devon4Net.Common.Domain.Database;
-using Devon4Net.Domain.UnitOfWork.Repository;
-using Devon4Net.Domain.UnitOfWork.UnitOfWork;
+using Devon4Net.WebAPI.Implementation.Configure;
+using Devon4Net.WebAPI.Implementation.Domain.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

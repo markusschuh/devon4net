@@ -25,9 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Devon4Net.Infrastructure.JW
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Devon4Net.Application.WebAPI.Configuration", "..\..\modules\Devon4Net.Application.WebAPI.Configuration\src\Devon4Net.Application.WebAPI.Configuration.csproj", "{A201CC1E-4225-4C4E-A030-AE9123E0600D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{2A64AE7D-8C34-4D27-8467-27B79585824B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Implementation", "Implementation", "{2A64AE7D-8C34-4D27-8467-27B79585824B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Devon4Net.Common", "Devon4Net.Common\Devon4Net.Common.csproj", "{47FCD679-11A6-4175-BAED-121965CACBF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Devon4Net.WebAPI.Implementation", "Devon4Net.WebAPI.Implementation\Devon4Net.WebAPI.Implementation.csproj", "{47FCD679-11A6-4175-BAED-121965CACBF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

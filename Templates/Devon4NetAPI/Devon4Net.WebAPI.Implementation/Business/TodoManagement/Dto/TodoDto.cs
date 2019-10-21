@@ -1,4 +1,4 @@
-﻿namespace Devon4Net.Common.Business.TodoManagement.Dto
+﻿namespace Devon4Net.WebAPI.Implementation.Business.TodoManagement.Dto
 {
     public class TodoDto
     {
