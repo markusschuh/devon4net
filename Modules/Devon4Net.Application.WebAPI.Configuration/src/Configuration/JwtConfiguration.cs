@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Devon4Net.Infrastructure.Common.Options.JWT;
 using Devon4Net.Infrastructure.JWT.Handlers;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Devon4Net.Application.WebAPI.Configuration
