@@ -11,7 +11,6 @@ using Devon4Net.Common.Domain.RepositoryInterfaces.TodoManagement;
 using Devon4Net.Domain.UnitOfWork.Service;
 using Devon4Net.Domain.UnitOfWork.UnitOfWork;
 using Devon4Net.Infrastructure.Log;
-using Microsoft.Extensions.Logging;
 
 namespace Devon4Net.Common.Business.TodoManagement.Service
 {
@@ -19,7 +18,7 @@ namespace Devon4Net.Common.Business.TodoManagement.Service
     {
         private readonly ITodoRepository _todoRepository;
 
-        public TodoService(IUnitOfWork<TodoContext> uoW, ILogger<TodoService> logger) : base(uoW)
+        public TodoService(IUnitOfWork<TodoContext> uoW) : base(uoW)
         {
             _todoRepository = uoW.Repository<ITodoRepository>();
         }
