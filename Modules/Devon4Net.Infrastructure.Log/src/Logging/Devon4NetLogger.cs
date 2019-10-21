@@ -54,7 +54,7 @@ namespace Devon4Net.Infrastructure.Log
 
         private static string GetExceptionMessage(ref Exception exception)
         {
-            var message = !String.IsNullOrEmpty(exception.Message) ? exception.Message : "No Exception Message";
+            var message = !string.IsNullOrEmpty(exception.Message) ? exception.Message : "No Exception Message";
             var innerException = exception.InnerException != null && exception.InnerException.Message != null ? exception.InnerException.Message : "No InnerException exception data found";
             var fullMessage = $"Exception Type: {exception.GetType().Name} | Message: {message} | InnerException: {innerException}";
             Console.WriteLine(fullMessage);

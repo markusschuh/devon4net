@@ -1,16 +1,10 @@
-using System;
 using Devon4Net.Common.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Devon4Net.Common.Domain.Database
 {
-    public partial class TodoContext : DbContext
+    public class TodoContext : DbContext
     {
-        public TodoContext()
-        {
-        }
-
         public TodoContext(DbContextOptions<TodoContext> options)
             : base(options)
         {

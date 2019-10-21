@@ -7,7 +7,6 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Devon4Net.Application.WebAPI.Configuration
 {
@@ -23,62 +22,64 @@ namespace Devon4Net.Application.WebAPI.Configuration
             var connectionString = applicationConnectionStrings.FirstOrDefault(c => c.Key.ToLower() == conectionStringName.ToLower());
             if (connectionString == null || string.IsNullOrEmpty(connectionString.Value)) throw new ArgumentException($"The provided connection string ({conectionStringName}) provided does not exists.");
 
-            services.AddDbContext<DbContext, T>(options =>
-             {
-                 switch (databaseType)
-                 {
-                     case DatabaseType.SqlServer:
-                         options.UseSqlServer(connectionString.Value, sqlServerOptionsAction: sqlOptions =>
-                         {
-                             sqlOptions.EnableRetryOnFailure(
-                             maxRetryCount: MaxRetryCount,
-                             maxRetryDelay: TimeSpan.FromSeconds(MaxRetryDelay),
-                             errorNumbersToAdd: null);
-                         });
-                         break;
-                     case DatabaseType.InMemory:
-                         options.UseInMemoryDatabase(connectionString.Value);
-                         break;
-                     case DatabaseType.MySql:
-                     case DatabaseType.MariaDb:
-                         options.UseMySql(connectionString.Value, sqlOptions =>
-                         {
-                             sqlOptions.EnableRetryOnFailure(
-                             maxRetryCount: MaxRetryCount,
-                             maxRetryDelay: TimeSpan.FromSeconds(MaxRetryDelay),
-                             errorNumbersToAdd: null);
-                         });
-                         break;
-                     case DatabaseType.Sqlite:
-                         options.UseSqlite(connectionString.Value);
-                         break;
-                     case DatabaseType.Cosmos:
-                         if (cosmosConfigurationParams == null) throw new ArgumentException($"The Cosmos configuration can not be null.");
-                         options.UseCosmos(cosmosConfigurationParams.Endpoint, cosmosConfigurationParams.Key, cosmosConfigurationParams.DatabaseName);
-                         break;
-                     case DatabaseType.PostgreSQL:
-                         options.UseNpgsql(connectionString.Value, sqlOptions =>
-                         {
-                             sqlOptions.EnableRetryOnFailure(
-                             maxRetryCount: MaxRetryCount,
-                             maxRetryDelay: TimeSpan.FromSeconds(MaxRetryDelay),
-                             errorCodesToAdd: null);
-                         });
-                         break;
-                     case DatabaseType.FireBird:
-                         options.UseFirebird(connectionString.Value);
-                         break;
-                     case DatabaseType.Oracle:
-                         options.UseOracle(connectionString.Value);
-                         break;
-                     case DatabaseType.MSAccess:
-                         options.UseJet(connectionString.Value);
-                         break;
-                     default:
-                         break;
-                 }
-             }, ServiceLifetime.Transient
-            );
+            switch (databaseType)
+            {
+                case DatabaseType.SqlServer:
+                    services.AddDbContext<T>(options=>options.UseSqlServer(connectionString.Value, sqlServerOptionsAction: sqlOptions =>
+                    {
+                        sqlOptions.EnableRetryOnFailure(
+                            maxRetryCount: MaxRetryCount,
+                            maxRetryDelay: TimeSpan.FromSeconds(MaxRetryDelay),
+                            errorNumbersToAdd: null);
+                    }));
+                    break;
+                case DatabaseType.InMemory:
+                    services.AddDbContext<T>(options => options.UseInMemoryDatabase(connectionString.Value));
+                    break;
+                case DatabaseType.MySql:
+                    services.AddDbContext<T>(options=> options.UseMySql(connectionString.Value, sqlOptions =>
+                    {
+                        sqlOptions.EnableRetryOnFailure(
+                            maxRetryCount: MaxRetryCount,
+                            maxRetryDelay: TimeSpan.FromSeconds(MaxRetryDelay),
+                            errorNumbersToAdd: new List<int>());
+                    }));
+                    break;
+                case DatabaseType.MariaDb:
+                    services.AddDbContext<T>(options => options.UseMySql(connectionString.Value, sqlOptions =>
+                    {
+                        sqlOptions.EnableRetryOnFailure(
+                            maxRetryCount: MaxRetryCount,
+                            maxRetryDelay: TimeSpan.FromSeconds(MaxRetryDelay),
+                            errorNumbersToAdd: new List<int>());
+                    }));
+                    break;
+                case DatabaseType.Sqlite:
+                    services.AddDbContext<T>(options => options.UseSqlite(connectionString.Value));
+                    break;
+                case DatabaseType.Cosmos:
+                    if (cosmosConfigurationParams == null) throw new ArgumentException($"The Cosmos configuration can not be null.");
+                    services.AddDbContext<T>(options => options.UseCosmos(cosmosConfigurationParams.Endpoint, cosmosConfigurationParams.Key, cosmosConfigurationParams.DatabaseName));
+                    break;
+                case DatabaseType.PostgreSQL:
+                    services.AddDbContext<T>(options => options.UseNpgsql(connectionString.Value, sqlOptions =>
+                    {
+                        sqlOptions.EnableRetryOnFailure(
+                            maxRetryCount: MaxRetryCount,
+                            maxRetryDelay: TimeSpan.FromSeconds(MaxRetryDelay),
+                            errorCodesToAdd: new List<string>());
+                    }));
+                    break;
+                case DatabaseType.FireBird:
+                    services.AddDbContext<T>(options => options.UseFirebird(connectionString.Value));
+                    break;
+                case DatabaseType.Oracle:
+                    services.AddDbContext<T>(options => options.UseOracle(connectionString.Value));
+                    break;
+                case DatabaseType.MSAccess:
+                    services.AddDbContext<T>(options => options.UseJet(connectionString.Value));
+                    break;
+            }
         }
     }
 }

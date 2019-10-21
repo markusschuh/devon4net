@@ -4,6 +4,7 @@ using Devon4Net.Infrastructure.Common;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using Serilog;
 
 namespace Devon4Net.Application.WebAPI.Configuration.Application
 {
@@ -26,6 +27,7 @@ namespace Devon4Net.Application.WebAPI.Configuration.Application
             HostBuilder.ConfigureWebHostDefaults(webBuilder =>
             {
                 webBuilder.UseStartup<T>();
+                webBuilder.UseSerilog();
                 webBuilder.UseConfiguration(Configuration);
 
                 var useDetailedErrorsKey = Configuration["devonfw:UseDetailedErrorsKey"];

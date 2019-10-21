@@ -1,8 +1,12 @@
 using Devon4Net.Application.WebAPI.Configuration;
+using Devon4Net.Common.Configure;
 using Devon4Net.Common.Domain.Database;
+using Devon4Net.Domain.UnitOfWork.Repository;
+using Devon4Net.Domain.UnitOfWork.UnitOfWork;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,15 +35,19 @@ namespace Devon4Net.Application.WebAPI
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.ConfigureDevonFw(Configuration);
+            SetupDatabase(services);
+            services.SetupDevonDependencyInjection();
             services.AddMvc(option => option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddControllers();
             services.AddOptions();
-            SetupDatabase(services);
         }
 
         private void SetupDatabase(IServiceCollection services)
         {
+            //services.AddDbContext<TodoContext>(op=>op.UseInMemoryDatabase("Todos"));
+
             services.SetupDatabase<TodoContext>(Configuration, "Default", WebAPI.Configuration.Enums.DatabaseType.InMemory);
         }
 

@@ -20,6 +20,7 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.0.1" />
     <PackageReference Include="Oracle.EntityFrameworkCore" Version="2.19.50" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.2.6" />
+    <PackageReference Include="Serilog.AspNetCore" Version="3.1.0" />
       <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
       <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="5.0.0-rc4" />
       <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="5.0.0-rc8" />
@@ -43,6 +44,7 @@
     <ProjectReference Include="..\..\Devon4Net.Domain.UnitOfWork\src\Devon4Net.Domain.UnitOfWork.csproj" />
     <ProjectReference Include="..\..\Devon4Net.Infrastructure.CircuitBreaker\src\Devon4Net.Infrastructure.CircuitBreaker.csproj" />
     <ProjectReference Include="..\..\Devon4Net.Infrastructure.Common\src\Devon4Net.Infrastructure.Common.csproj" />
+    <ProjectReference Include="..\..\Devon4Net.Infrastructure.Extensions\src\Devon4Net.Infrastructure.Extensions.csproj" />
     <ProjectReference Include="..\..\Devon4Net.Infrastructure.JWT\src\Devon4Net.Infrastructure.JWT.csproj" />
     <ProjectReference Include="..\..\Devon4Net.Infrastructure.Log\src\Devon4Net.Infrastructure.Log.csproj" />
     <ProjectReference Include="..\..\Devon4Net.Infrastructure.Middleware\src\Devon4Net.Infrastructure.Middleware.csproj" />
