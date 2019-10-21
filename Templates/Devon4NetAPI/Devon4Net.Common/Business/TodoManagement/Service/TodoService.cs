@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Devon4Net.Common.Business.TodoManagement.Converters;
+using Devon4Net.Common.Business.TodoManagement.Dto;
 using Devon4Net.Common.Domain.Database;
 using Devon4Net.Common.Domain.Entities;
 using Devon4Net.Common.Domain.RepositoryInterfaces.TodoManagement;
@@ -11,7 +14,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Devon4Net.Common.Business.TodoManagement.Service
 {
-    public class TodoService: Service<TodoContext>
+    public class TodoService: Service<TodoContext>, ITodoService
     {
         private readonly ILogger<TodoService> _logger;
         private readonly ITodoRepository _todoRepository;
@@ -22,10 +25,11 @@ namespace Devon4Net.Common.Business.TodoManagement.Service
             _todoRepository = uoW.Repository<ITodoRepository>();
         }
 
-        public async Task<IList<Todos>> GetTodo(Expression<Func<Todos, bool>> predicate = null)
+        public async Task<IEnumerable<TodoDto>> GetTodo(Expression<Func<Todos, bool>> predicate = null)
         {
             _logger.LogDebug("GetTodo method from service TodoService");
-            return await _todoRepository.GetTodo(predicate).ConfigureAwait(false);
+            var result = await _todoRepository.GetTodo(predicate).ConfigureAwait(false);
+            return result.Select(TodoConverter.ModelToDto);
         }
 
         public async Task<Todos> GetTodoById(long id)
