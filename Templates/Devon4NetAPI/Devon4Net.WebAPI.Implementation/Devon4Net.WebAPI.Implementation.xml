@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Devon4Net.WebAPI.Implementation</name>
+    </assembly>
+    <members>
+        <member name="M:Devon4Net.WebAPI.Implementation.Business.TodoManagement.Controllers.TodoController.GetTodo">
+            <summary>
+            Gets the entire list of TODOS
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Devon4Net.WebAPI.Implementation.Business.TodoManagement.Controllers.TodoController.Create(System.String)">
+            <summary>
+            Gets the entire list of TODOS
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Devon4Net.WebAPI.Implementation.Business.TodoManagement.Controllers.TodoController.Delete(System.Int64)">
+            <summary>
+            Gets the entire list of TODOS
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Devon4Net.WebAPI.Implementation.Domain.Entities.Todos">
+            <summary>
+            Entity class for Todos
+            </summary>
+        </member>
+    </members>
+</doc>

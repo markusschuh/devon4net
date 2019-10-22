@@ -27,7 +27,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\modules\Devon4Net.Application.WebAPI.Configuration\src\Devon4Net.Application.WebAPI.Configuration.csproj" />
-      <ProjectReference Include="..\..\..\modules\Devon4Net.Infrastructure.Common\src\Devon4Net.Infrastructure.Common.csproj" />
       <ProjectReference Include="..\Devon4Net.WebAPI.Implementation\Devon4Net.WebAPI.Implementation.csproj" />
     </ItemGroup>
 
