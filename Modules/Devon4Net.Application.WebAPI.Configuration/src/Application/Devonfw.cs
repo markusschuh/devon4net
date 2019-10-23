@@ -46,11 +46,11 @@ namespace Devon4Net.Application.WebAPI.Configuration.Application
                 }
 
             });
+        }
 
-            void ConfigureIis(ref IWebHostBuilder webBuilder)
-            {
-                webBuilder.UseIISIntegration();
-            }
+        private static void ConfigureIis(ref IWebHostBuilder webBuilder)
+        {
+            webBuilder.UseIISIntegration();
         }
 
         private static void LoadConfiguration()

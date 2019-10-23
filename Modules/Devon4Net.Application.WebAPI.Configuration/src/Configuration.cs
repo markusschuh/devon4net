@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Devon4Net.Infrastructure.Common.Options.Log;
+using Devon4Net.Application.WebAPI.Configuration.Application;
 
 namespace Devon4Net.Application.WebAPI.Configuration
 {
@@ -27,6 +28,7 @@ namespace Devon4Net.Application.WebAPI.Configuration
 
         public static void ConfigureDevonFw(this IServiceCollection services, IConfiguration configuration)
         {
+            services.ConfigureIIS(configuration);
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
 

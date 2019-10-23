@@ -15,12 +15,17 @@ namespace Devon4Net.Application.WebAPI.Configuration.Application
         {
             int.TryParse(configuration["devonfw:Kestrel:ApplicationPort"], out int applicationPort);
             bool.TryParse(configuration["devonfw:Kestrel:UseHttps"], out bool useHttps);
+            long.TryParse(configuration["devonfw:Kestrel:MaxConcurrentConnections"], out long maxConcurrentConnections);
+            long.TryParse(configuration["devonfw:Kestrel:MaxConcurrentUpgradedConnections"], out long maxConcurrentUpgradedConnections);
             
             webBuilder.UseKestrel(options =>
             {
                 options.AddServerHeader = false;
                 options.Listen(IPAddress.Any, applicationPort, listenOptions =>
                 {
+                    options.Limits.MaxConcurrentConnections = maxConcurrentConnections;
+                    options.Limits.MaxConcurrentUpgradedConnections = maxConcurrentUpgradedConnections;
+
                     if (!useHttps) return;
                     
                     var httpsOptions = new HttpsConnectionAdapterOptions();
