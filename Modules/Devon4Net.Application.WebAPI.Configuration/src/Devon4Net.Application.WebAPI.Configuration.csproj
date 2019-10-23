@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-        <Version>3.0.1</Version>
+        <Version>3.0.2</Version>
         <Authors>Capgemini, ADCenter Valencia, Traiectum Team</Authors>
         <Company>Capgemini S.A.</Company>
         <Description>Configuration library for devon4net webapi template</Description>
