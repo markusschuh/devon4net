@@ -47,7 +47,7 @@ icon:= fa-thumbs-o-up[] prefer adding a suffix rather than a prefix to indicate 
 
 icon:= fa-thumbs-o-up[] use a numeric suffix to indicate a new version of an existing API, particularly if the existing name of the API is the only name that makes sense (i.e., if it is an industry standard) and if adding any meaningful suffix (or changing the name) is not an appropriate option.
 
-icon:= fa-thumbs-o-down[] do not use underscores, hyphens, or any other nonalphanumeric characters.
+icon:= fa-thumbs-o-down[] do not use underscores, hyphens, or any other non-alphanumeric characters.
 
 icon:= fa-thumbs-o-down[] do not use Hungarian notation.
 
@@ -90,7 +90,7 @@ Litware.Controls.dll.
 
 * Indention: Use tabs with size of 4. 
 
-* Comments: Use // for simple comment or /// for sumaries. Do not /* … */ and do not flowerbox. 
+* Comments: Use // for simple comment or /// for summaries. Do not /* … */ and do not flower box.
 
 * Use Use built-in C# native data types vs .NET CTS types (string instead of String)
 
@@ -102,7 +102,7 @@ Litware.Controls.dll.
 
 * Avoid using _Finalize_. Use C# Destructors and do not create Finalize() method. 
 
-* Suggetion: Use blank lines, to make it much more readable by dividing it into small, easy-to-digest sections:
+* Suggestion: Use blank lines, to make it much more readable by dividing it into small, easy-to-digest sections:
 
     ◦ Use a single blank line to separate logical groups of code, such as control structures.
     ◦ Use two blank lines to separate method definitions
@@ -119,7 +119,7 @@ Litware.Controls.dll.
 |Public field|Pascal case
 |Private field|Camel case with underscore (_) prefix
 |Static field|Pascal case
-|Porperty|Pascal case. Try to use get and and set convention {get;set;}
+|Property|Pascal case. Try to use get and and set convention {get;set;}
 |Constant|Pascal case
 |Enum|Pascal case
 |Variable (inline)|Camel case
@@ -143,7 +143,7 @@ Code is the only completely reliable documentation: write “good code” first!
 === [navy]#Avoid Unnecessary comments#
 
 
-* Choosing good names for fields, methods, paramteres, etc. “let the code speak” (K. Beck) by itself reducing the need for comments and documentation
+* Choosing good names for fields, methods, parameters, etc. “let the code speak” (K. Beck) by itself reducing the need for comments and documentation
 
 
 * Avoid “repeating the code” and commenting the obvious

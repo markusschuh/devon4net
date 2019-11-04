@@ -1,6 +1,6 @@
 = devon4net
 
-== Arquitecture basics
+== Architecture basics
 
 include::architecture_guide.asciidoc[leveloffset=2]
 

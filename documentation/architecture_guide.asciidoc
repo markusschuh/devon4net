@@ -24,7 +24,7 @@ The next figure represents the different layers:
 image::images/onion.png["technical architecture", width="450", link="images/onion.png"]
 
 
-The layers are separated in phisical tiers making use of interfaces. This pattern makes possible to be flexible in different kind of projects maximizing performance and deployment strategies (synchronous/asynchronous access, security, component deployment in different environments, microservices...). Another important point is to provide automated unit testing or test-driven development (TDD) facilities.
+The layers are separated in physical tiers making use of interfaces. This pattern makes possible to be flexible in different kind of projects maximizing performance and deployment strategies (synchronous/asynchronous access, security, component deployment in different environments, microservices...). Another important point is to provide automated unit testing or test-driven development (TDD) facilities.
 
 ==== Application layer
 
@@ -38,10 +38,10 @@ The given application template integrates Swagger contract automatic generation.
 
 ==== Business layer
 The business layer implements the core functionality of the application and encapsulates the component's logic. 
-This layer provides the interface between the data transformation and the application expositure. This allow the data to be optimized and ready for different data consumers.
+This layer provides the interface between the data transformation and the application exposition. This allow the data to be optimized and ready for different data consumers.
 
 ==== Service layer
-The service layer orchestrates the data obtained between the _Domain Layer_ and the _Business Layer_. Also transforms the data to be used more efficently between layers. 
+The service layer orchestrates the data obtained between the _Domain Layer_ and the _Business Layer_. Also transforms the data to be used more efficiently between layers.
 
 So, if a service needs the help of another service or repository, the implemented Dependency Injection is the solution to accomplish the task.
 
@@ -57,11 +57,11 @@ NOTE: Once more <T> is the mapped class which reference the entity from the data
 
 ==== Domain layer
 
-The data layer provides access to data directly exposed from other systems. The main source use to be a data base system. The provided template makes use of _Entity Framwork_ solution from Microsoft in order to achieve this functionality. 
+The data layer provides access to data directly exposed from other systems. The main source use to be a data base system. The provided template makes use of _Entity Framework_ solution from Microsoft in order to achieve this functionality.
 
 To make a good use of this technology, _Repository Pattern_ has been implemented with the help of _Unit Of Work_ pattern. Also, the use of generic types are makes this solution to be the most flexible.
 
-Regarding to data base source, each entity is mapped as a class. Repository pattern allows to use this mapped clasess to acces the data base via Entity framework:
+Regarding to data base source, each entity is mapped as a class. Repository pattern allows to use this mapped classes to access the data base via Entity framework:
 
 [source,C#]
 ----
@@ -75,9 +75,9 @@ The repository and unit of work patterns are create an abstraction layer between
 
 ==== Cross-Cutting concerns
 
-Cross-cutting provides the implementation functionality that spans layers. Each functionality is implemented through components able to work stand alone. This approach provides better reusability and mantainability.
+Cross-cutting provides the implementation functionality that spans layers. Each functionality is implemented through components able to work stand alone. This approach provides better reusability and maintainability.
 
-A common component set of cross cutting components include different types of functionality regarding to athentication, authorization, security, caching, configuration, logging, and communication.
+A common component set of cross cutting components include different types of functionality regarding to authentication, authorization, security, caching, configuration, logging, and communication.
 
 
 == Communication between Layers: Interfaces
@@ -88,7 +88,7 @@ Public interfaces allow to hide implementation details of the components within 
 
 In order to make this possible, we make use of _Dependency Injection Pattern_ (implementation of dependency inversion) given by default in _.Net Core_.
 
-The provided _Data Layer_ contains the abstract clases to inherite from. All new repository and service classes must inherit from them, also the must implement their own interfaces.
+The provided _Data Layer_ contains the abstract classes to inherit from. All new repository and service classes must inherit from them, also the must implement their own interfaces.
 
 
 [[img-t-architecture]]
@@ -218,7 +218,7 @@ The compete RID (Runtime Identifier) catalog is this:
 
 https://docs.microsoft.com/en-us/dotnet/standard/frameworks[.Net Frameworks]
 
-https://docs.microsoft.com/en-us/ef/[Entity Framwork documentation from Microsoft]
+https://docs.microsoft.com/en-us/ef/[Entity Framework documentation from Microsoft]
 
 https://swagger.io/[Swagger API tooling]
 
